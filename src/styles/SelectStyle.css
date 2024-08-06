@@ -1,0 +1,21 @@
+select {
+  appearance: none; 
+  -moz-appearance: none; 
+  -webkit-appearance: none; 
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232D6DF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>')
+    no-repeat right 10px center;
+  padding-right: px; 
+  background-size: 20px; 
+  background-color: white;
+}
+
+.select-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.select-container select {
+  width: 100%;
+  padding-right: 80px; 
+}
