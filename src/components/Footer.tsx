@@ -33,7 +33,7 @@ export const Footer = () => {
   }, []);
 
   return (
-    <footer className="footer bg-white text-light p-4 border-t-[1px] border-[#0033A0] sm:p-6 lg:py-[20px] lg:px-[70px] 2xl:px-[20px]">
+    <footer className="footer bg-white text-light p-10 border-t-[1px] border-[#0033A0] sm:p-6 lg:py-[20px] lg:px-[70px] xl:px-20">
       <div className="mt-8">
         <div className="flex flex-col gap-8 px-4 sm:flex-row md:px-[60px] sm:px-6 lg:px-16 lg:gap-16">
           <div className="max-w-lg mx-auto sm:h">

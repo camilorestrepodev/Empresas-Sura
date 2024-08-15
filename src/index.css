@@ -1,94 +1,102 @@
+@import url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.woff2");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Sura-Sans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.ttf")
+      format(truetype),
+    url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.woff2")
+      format(woff2);
+}
+ 
 body {
-  font-family: 'Sura Sans' !important;
+  font-family: "Sura-Sans" !important;
 }
 
-.bg-titulo-xxxs{
-  @apply  xxxs:text-xl
+.bg-titulo-xxxs {
+  @apply xxxs:text-xl;
 }
 
-.bg-titulo-xxs{
-  @apply  xxs:text-2xl
+.bg-titulo-xxs {
+  @apply xxs:text-2xl;
 }
 
-.bg-titulo-xs{
-  @apply xs:text-3xl
+.bg-titulo-xs {
+  @apply xs:text-3xl;
 }
 
-.descripcion-xxxs{
-  @apply xxxs:text-lg
+.descripcion-xxxs {
+  @apply xxxs:text-lg;
 }
 
-.descripcion-xxs{
-  @apply xxs:text-xl
+.descripcion-xxs {
+  @apply xxs:text-xl;
 }
 
-.descripcion-xs{
-  @apply xs:text-2xl
+.descripcion-xs {
+  @apply xs:text-2xl;
 }
 
-.container-xxxs{
-  @apply xxxs:top-[55%] 
+.container-xxxs {
+  @apply xxxs:top-[55%];
 }
 
-.container-xxs{
-  @apply xxs:top-[55%] 
+.container-xxs {
+  @apply xxs:top-[55%];
 }
 
-.container-xs{
-  @apply xs:top-[55%] 
+.container-xs {
+  @apply xs:top-[55%];
 }
 
-.talleres-titulo-xxxs{
-  @apply xxxs:text-lg text-center px-2
+.talleres-titulo-xxxs {
+  @apply xxxs:text-lg text-center px-2;
 }
 
-.talleres-titulo-xxs{
-  @apply xxs:text-xl
+.talleres-titulo-xxs {
+  @apply xxs:text-xl;
 }
 
-.talleres-titulo-xs{
-  @apply xs:text-2xl
+.talleres-titulo-xs {
+  @apply xs:text-2xl;
 }
 
-.descripcion-talleres-xxxs{
-  @apply xxxs:text-xl
+.descripcion-talleres-xxxs {
+  @apply xxxs:text-xl;
 }
 
-.descripcion-talleres-xxs{
-  @apply xxs:text-2xl
+.descripcion-talleres-xxs {
+  @apply xxs:text-2xl;
 }
 
-.descripcion-talleres-xs{
-  @apply xs:text-3xl
+.descripcion-talleres-xs {
+  @apply xs:text-3xl;
 }
 
-.talleres-container-xxxs{
-  @apply xxxs:top-[72%] 
+.talleres-container-xxxs {
+  @apply xxxs:top-[72%];
 }
 
-.talleres-container-xxs{
-  @apply xxs:top-[75%]
+.talleres-container-xxs {
+  @apply xxs:top-[75%];
 }
 
-.talleres-container-xs{
-  @apply xs:top-[75%]
+.talleres-container-xs {
+  @apply xs:top-[75%];
 }
 
-.asistencia-container-xxxs{
-  @apply xxxs:top-[70%] 
+.asistencia-container-xxxs {
+  @apply xxxs:top-[70%];
 }
 
-.asistencia-container-xxs{
-  @apply xxs:top-[72%]
+.asistencia-container-xxs {
+  @apply xxs:top-[72%];
 }
 
-.asistencia-container-xs{
-  @apply xs:top-[75%]
+.asistencia-container-xs {
+  @apply xs:top-[75%];
 }
-
-
-

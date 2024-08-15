@@ -153,9 +153,9 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                         "El número de documento debe tener al menos 7 dígitos",
                     },
                     maxLength: {
-                      value: 12,
+                      value: 10,
                       message:
-                        "El número de documento no puede tener más de 12 dígitos",
+                        "El número de documento no puede tener más de 10 dígitos",
                     },
                   }}
                   render={({ field }) => (

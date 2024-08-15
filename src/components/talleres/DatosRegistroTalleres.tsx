@@ -26,6 +26,12 @@ interface TallerData {
   Hora: string;
 }
 
+interface Fecha {
+    Taller: string;
+    Fecha: string;
+    Hora: string;
+}
+
 export function DatosRegistroTalleres() {
   const {
     register,
@@ -45,8 +51,8 @@ export function DatosRegistroTalleres() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const loadingGif = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/d7d9d0b5-629c-449a-9e69-d1f2178fe8d6.gif"
-
+  const loadingGif =
+    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/d7d9d0b5-629c-449a-9e69-d1f2178fe8d6.gif";
 
   const areasOptions = [
     { value: "Talento Humano", label: "Talento Humano" },
@@ -117,7 +123,6 @@ export function DatosRegistroTalleres() {
     setLoading(true);
     try {
       const response = await FechaFetch();
-      console.log('Fechas:', response);
       const currentDate = new Date().toISOString();
       const filteredFechas = response.filter(
         (fecha: TallerData) => new Date(fecha.Fecha) > new Date(currentDate)
@@ -135,32 +140,72 @@ export function DatosRegistroTalleres() {
   };
 
   const onSubmit = async (data: any) => {
-    const { nombreCompleto, correoElectronico, numeroDocumento } = data;
+    setLoading(true);
+    const {
+      nombreCompleto,
+      correoElectronico,
+      numeroDocumento,
+      nombreEmpresa,
+    } = data;
+
     const selectedFechas = fechasFiltradas.map((fecha) => ({
       Taller: fecha.Taller,
       Fecha: fecha.Fecha,
       Hora: fecha.Hora.toUpperCase(),
     }));
 
+    const selectedFechasCorreos: {[key: string]: string } | null = fechasFiltradas.reduce(
+      (acc: {[key: string]: string}, fecha: Fecha, index) => {
+        const tallerKey = `taller${index + 1}`;
+        acc[tallerKey] =  fecha.Taller,
+        acc[`fecha${index + 1}`] = fecha.Fecha,
+        acc[`hora${index + 1}`] = formatHora(fecha.Hora)
+        return acc;
+      },
+      {}
+    );
+
+    function formatHora(hora: string): string {
+      let [hours, minutes] = hora.split(":");
+      let period = "AM";
+
+      let parsedHours = parseInt(hours);
+      if (parsedHours >= 12) {
+        period = "PM";
+        if (parsedHours > 12) parsedHours -= 12;
+      } else if (parsedHours === 0) {
+        parsedHours = 12;
+      }
+
+      return `${parsedHours}:${minutes} ${period}`;
+    }
+
     const requestBody = {
       numeroDocumento,
       nombreCompleto,
       correoElectronico,
+      nombreEmpresa,
       selectedFechas,
+    };
+
+    const requestBodyCorreos = {
+      numeroDocumento,
+      nombreCompleto,
+      correoElectronico,
+      nombreEmpresa,
+      selectedFechasCorreos,
     };
 
     try {
       const apiResponse = await enviarRespuestasTalleres(requestBody);
-      console.log("Respuesta de la API:", apiResponse); 
-      try{
-        const apiResponse2 = await enviarCorreosTalleres(requestBody);
-        console.log("Respuesta de la API:", apiResponse2); 
-      }catch(error){
-        console.error("Hubo un problema con la petición:", error);
+      const apiResponse2 = await enviarCorreosTalleres(requestBodyCorreos);
+      if (apiResponse && apiResponse2) {
+        navigate("/talleres/thank-you-talleres");
       }
-      navigate("/talleres/thank-you-talleres");
     } catch (error) {
       console.error("Hubo un problema con la petición:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -180,14 +225,13 @@ export function DatosRegistroTalleres() {
     }
   }, [segundaArea]);
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      <section  className="bg-[#DFEAFF] px-5 py-10 md md:w-full md:h-auto md:px-20 lg:px-[130px]">
+      <section className="bg-[#DFEAFF] px-10 sm:px-10 py-10 xs:px-10 md:w-full md:h-auto md:px-20 lg:px-10 xl:px-[110px]">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2 className="text-[#2D6DF6] font-bold text-[18px] text-center lg:text-[32px] md:text-[32px] md:text-left lg:text-left">
             ¡Da el primer paso!
@@ -197,7 +241,7 @@ export function DatosRegistroTalleres() {
             camino de tu ruta de competitividad empresarial.
           </p>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="tipoDocumento" className="font-semibold">
               1. Tipo de documento:
             </label>
@@ -209,7 +253,7 @@ export function DatosRegistroTalleres() {
                 <select
                   id="tipoDocumento"
                   defaultValue={"seleccionar"}
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
                   {...field}
                 >
                   <option value="seleccionar" disabled>
@@ -221,19 +265,19 @@ export function DatosRegistroTalleres() {
               )}
             />
             {errors.tipoDocumento && (
-                <div className="error text-[#E40506] italic text-[14px]">
-                  {errors.tipoDocumento.message as ReactNode}
-                </div>
-              )}
+              <div className="error text-[#E40506] italic text-[14px]">
+                {errors.tipoDocumento.message as ReactNode}
+              </div>
+            )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="numeroDocumento" className="font-semibold">
               2. Número de documento:
             </label>
             <input
               id="numeroDocumento"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               type="text"
               placeholder="Ej. 123456789"
               value={inputValue}
@@ -247,7 +291,7 @@ export function DatosRegistroTalleres() {
           </div>
 
           {tipoDocumento === "nit" && (
-            <div className="mt-5 flex flex-col">
+            <div className="mt-3 flex flex-col">
               <label htmlFor="nit" className="font-semibold">
                 Dígito de verificación:
               </label>
@@ -261,13 +305,13 @@ export function DatosRegistroTalleres() {
             </div>
           )}
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="nombreCompleto" className="font-semibold">
               3. Nombre completo:
             </label>
             <input
               id="nombreCompleto"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               type="text"
               placeholder="Ej. Martha Gómez"
               {...register("nombreCompleto", {
@@ -296,13 +340,13 @@ export function DatosRegistroTalleres() {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="nombreEmpresa" className="font-semibold">
               4. Nombre de la empresa:
             </label>
             <input
               id="nombreEmpresa"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               type="text"
               placeholder="Ingresa el nombre de la empresa"
               {...register("nombreEmpresa", {
@@ -324,13 +368,13 @@ export function DatosRegistroTalleres() {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="correoElectronico" className="font-semibold">
               5. Correo electrónico:
             </label>
             <input
               id="correoElectronico"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               type="email"
               placeholder="Ingresa tu correo"
               {...register("correoElectronico", {
@@ -351,13 +395,13 @@ export function DatosRegistroTalleres() {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="celular" className="font-semibold">
               6. Número de celular:
             </label>
             <input
               id="celular"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               type="tel"
               placeholder="Ingresa tu celular"
               pattern="[0-9]{10}"
@@ -383,13 +427,13 @@ export function DatosRegistroTalleres() {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="cargo" className="font-semibold">
               7. Cargo:
             </label>
             <input
               id="cargo"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               type="text"
               placeholder="Ingresa tu cargo"
               {...register("cargo", {
@@ -410,7 +454,7 @@ export function DatosRegistroTalleres() {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="primerArea" className="font-semibold">
               8. Selecciona la primera área en la que quieres asistir al espacio
               grupal. Recuerda que debe coincidir con tu ruta de competitividad:
@@ -423,7 +467,7 @@ export function DatosRegistroTalleres() {
                 <select
                   id="primerArea"
                   defaultValue={"seleccionar"}
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
                   {...field}
                   onChange={(e) => {
                     field.onChange(e);
@@ -443,7 +487,7 @@ export function DatosRegistroTalleres() {
             />
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label htmlFor="segundaArea" className="font-semibold">
               9. Selecciona la segunda área en la que quieres asistir al espacio
               grupal. Recuerda que debe coincidir con tu ruta de competitividad:
@@ -456,7 +500,7 @@ export function DatosRegistroTalleres() {
                 <select
                   id="segundaArea"
                   defaultValue={"seleccionar"}
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
                   {...field}
                   onChange={(e) => {
                     field.onChange(e);
@@ -478,12 +522,12 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-10 text-[#2D6DF6] text-[24px] text-center md:text-left lg:text-left lg:text-[32px] font-[700]">
             {loading ? (
-                  <div className="flex justify-center px-[120px] py-[70px]">
-                    <div className="spinner">
-                      <div className="spinner-ring"></div>
-                      <img src={loadingGif} alt="Imagen de condor" />
-                    </div>
-                  </div>
+              <div className="flex justify-center px-[120px] py-[70px]">
+                <div className="spinner">
+                  <div className="spinner-ring"></div>
+                  <img src={loadingGif} alt="Imagen de condor" />
+                </div>
+              </div>
             ) : (
               fechasFiltradas.length > 0 && (
                 <div>
@@ -494,9 +538,10 @@ export function DatosRegistroTalleres() {
                   <div className="flex justify-center py-[50px]">
                     <button
                       type="submit"
-                      className="h-[56px] w-[250px] rounded-[28px] bg-[#2D6DF6] text-white text-[18px] p-4 font-[700]"
+                      className="h-[56px] w-[250px] rounded-[28px] bg-[#2D6DF6] text-white text-[18px] font-[700]"
+                      disabled={loading}
                     >
-                      Quiero inscribirme
+                     {loading ? "Enviando..." : "Quiero inscribirme"}
                     </button>
                   </div>
                 </div>

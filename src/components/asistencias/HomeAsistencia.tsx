@@ -90,13 +90,11 @@ const HomeAsistencia = () => {
   const handleBlur = async () => {
     try {
       const response = await GetTaller(inputValue);
-      console.log("response:", response);
       if (response && response.Taller) {
         const filteredData = response.Taller.map((item: any) => ({
           taller: item.Taller,
           fecha: item.Fecha,
         }));
-        console.log("filteredData:", filteredData);
         setResponseData(filteredData);
       } else {
         setResponseData([]);
@@ -108,6 +106,7 @@ const HomeAsistencia = () => {
   
   const convertirFechaBogota = (fechaISO: string) => {
     const fecha = new Date(fechaISO);
+    fecha.setHours(fecha.getHours() - 2);
     const opciones: Intl.DateTimeFormatOptions = {
       timeZone: 'America/Bogota',
       year: 'numeric',
@@ -133,7 +132,7 @@ const HomeAsistencia = () => {
 
   return (
     <>
-      <section className="px-5 py-10 md md:w-full md:h-auto md:px-20 lg:px-[130px]">
+      <section className="px-10 py-10 md md:w-full md:h-auto md:px-20 lg:px-10 xl:px-[110px]">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2 className="text-[#2D6DF6] mt-10 font-bold text-[18px] text-center lg:text-[32px] md:text-[32px] md:text-left lg:text-left">
             ¿Asististe a nuestro taller? Cuéntanos más
@@ -157,7 +156,7 @@ const HomeAsistencia = () => {
                 <select
                   id="tipoDocumento"
                   defaultValue=""
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
                   {...field}
                 >
                   <option value="" disabled>
@@ -177,7 +176,7 @@ const HomeAsistencia = () => {
               </label>
               <input
                 id="numeroDocumento"
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
                 type="text"
                 placeholder="Ej. 123456789"
                 value={inputValue}
@@ -214,7 +213,7 @@ const HomeAsistencia = () => {
               rules={{ required: "El taller es requerido" }}
               render={({ field }) => (
                 <select
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
                   defaultValue=""
                   {...field}
                 >
@@ -240,7 +239,7 @@ const HomeAsistencia = () => {
             </label>
             <input
               id="nombreCompleto"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               type="text"
               placeholder="Ej. Martha Gómez"
               {...register("nombreCompleto", {
@@ -275,7 +274,7 @@ const HomeAsistencia = () => {
             </label>
             <input
               type="text"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               placeholder="Ej: Empresa"
               {...register("nombreEmpresa", {
                 required: {
@@ -302,7 +301,7 @@ const HomeAsistencia = () => {
             </label>
             <input
               type="email"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               placeholder="Ingresa tu correo"
               {...register("correoElectronico", {
                 required: {
@@ -328,7 +327,7 @@ const HomeAsistencia = () => {
             </label>
             <input
               type="tel"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               placeholder="Ingresa tu celular"
               pattern="[0-9]{10}"
               {...register("celular", {
@@ -359,7 +358,7 @@ const HomeAsistencia = () => {
             </label>
             <input
               type="text"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
               placeholder="Ingresa tu cargo"
               {...register("cargo", {
                 required: {
@@ -487,7 +486,7 @@ const HomeAsistencia = () => {
                 rules={{ required: "Esta pregunta es obligatoria" }}
                 render={({ field }) => (
                   <select
-                    className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                    className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
                     defaultValue=""
                     onChange={(e) => {
                       field.onChange(e);
