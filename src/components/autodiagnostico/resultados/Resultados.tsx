@@ -4,12 +4,18 @@ import Ruta from "./rutas-autodiagnositco/Ruta";
 import { informacionRutas } from "./InformacionRutas.data";
 import "../../../styles/Spinner.css";
 import { useNavigate } from "react-router";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-export default function Resultados({ response, enviarRequestCorreos }: any) {
+export default function Resultados({
+  response,
+  enviarRequestCorreos,
+  enviarRutasMenores,
+  enviarGuardarInfo,
+}: any) {
   const loading =
     "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/d7d9d0b5-629c-449a-9e69-d1f2178fe8d6.gif";
 
+  const [rutasEnviadas, setRutasEnviadas] = useState(false);
   const navigate = useNavigate();
   const getColorClass = (
     resultado: string
@@ -44,11 +50,58 @@ export default function Resultados({ response, enviarRequestCorreos }: any) {
 
   const sectionResultados = useRef<HTMLDivElement>(null);
 
+  const nombresVerticales: Record<string, string> = {
+    TH: "Talento Humano",
+    F: "Financiera",
+    MO: "Modelo Operativo",
+    A: "Ambiental",
+    L: "Legal",
+    M: "Mercados",
+    TTD: "Tecnología y Transformación Digital",
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const hasSentEmail = useRef(false);
+
+  const procesarRutas = (respuestasFormulario: any) => {
+    const rutas = respuestasFormulario
+      .map((vertical: any) => {
+        const nombreVertical = nombresVerticales[vertical.nombreVertical];
+        return nombreVertical
+          ? {
+              nombreVertical,
+              resultado: vertical.ResultadoPorVertical,
+            }
+          : null;
+      })
+      .filter((ruta: any) => ruta !== null);
+  
+    rutas.sort((a: any, b: any) => a.resultado - b.resultado);
+  
+    const rutasMenores = rutas.slice(0, 2).map((ruta: any) => ruta.nombreVertical);
+  
+    return rutasMenores;
+  };
+
+  const handleEnviarRutasMenores = useCallback(
+    (rutas: any[]) => {
+      enviarRutasMenores(rutas);
+    },
+    [enviarRutasMenores]
+  );
+
+  useEffect(() => {
+    if (response && response.respuestasFormulario && !rutasEnviadas) {
+      const rutasProcesadas = procesarRutas(response.respuestasFormulario);
+      console.log(rutasProcesadas)
+      handleEnviarRutasMenores(rutasProcesadas);
+      setRutasEnviadas(true); 
+    }
+  }, [response, rutasEnviadas, handleEnviarRutasMenores]);
+
 
   useEffect(() => {
     if (response && response.respuestasFormulario && !hasSentEmail.current) {
@@ -56,7 +109,7 @@ export default function Resultados({ response, enviarRequestCorreos }: any) {
       hasSentEmail.current = true;
     }
   }, [response, enviarRequestCorreos]);
-  
+
   if (!response || !response.respuestasFormulario) {
     return (
       <div className="flex justify-center px-[120px] py-[70px]">
@@ -68,8 +121,6 @@ export default function Resultados({ response, enviarRequestCorreos }: any) {
     );
   }
 
-  
-
   const sortedResults: Vertical[] = response.respuestasFormulario.sort(
     (a: Vertical, b: Vertical) => {
       const resultA = Math.floor(parseFloat(a.ResultadoPorVertical));
@@ -78,17 +129,8 @@ export default function Resultados({ response, enviarRequestCorreos }: any) {
     }
   );
 
-  const nombresVerticales: Record<string, string> = {
-    TH: "Talento Humano",
-    F: "Financiera",
-    MO: "Modelo Operativo",
-    A: "Ambiental",
-    L: "Legal",
-    M: "Mercados",
-    TTD: "Tecnología y Transformación Digital",
-  };
-
   const menoresPorcentajesVerticales = sortedResults.slice(0, 2);
+
   const rutasMenoresPorcentajes = menoresPorcentajesVerticales.map(
     (vertical) => {
       const nombreVertical = nombresVerticales[vertical.nombreVertical];
@@ -96,8 +138,8 @@ export default function Resultados({ response, enviarRequestCorreos }: any) {
     }
   );
 
-
   const onClick = () => {
+    enviarGuardarInfo();
     navigate("/talleres/datos-registro-talleres");
   };
 
@@ -147,7 +189,7 @@ export default function Resultados({ response, enviarRequestCorreos }: any) {
                             )}%`,
                           }}
                         >
-                          <span className="porcentaje-texto text-[14px] mt-5">
+                          <span className="porcentaje-texto text-[14px] mt-4">
                             {Math.floor(
                               parseFloat(vertical.ResultadoPorVertical)
                             )}

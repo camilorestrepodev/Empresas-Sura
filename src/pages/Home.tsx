@@ -21,8 +21,7 @@ import Legal from "../components/autodiagnostico/legal/Legal";
 import ModeloOperativo from "../components/autodiagnostico/modelo-operativo/ModeloOperativo";
 import Ambiental from "../components/autodiagnostico/ambiental/Ambiental";
 import Resultados from "../components/autodiagnostico/resultados/Resultados";
-
-
+import guardarInfo from "../libs/GuardarInfo";
 
 export default function Home() {
   const fondoResultados =
@@ -41,6 +40,7 @@ export default function Home() {
   const [respuestas, setRespuestas] = useState({});
   const [dataRegister, setDataRegister] = useState({});
   const [descripciones, setDescripciones] = useState({});
+  const [rutasMenores, setRutasMenores] = useState({});
   const [id, setId] = useState<string | null>(null);
 
   const location = useLocation();
@@ -58,8 +58,6 @@ export default function Home() {
     });
     return params;
   };
-
-  
 
   useEffect(() => {
     const handleHashChange = async () => {
@@ -125,16 +123,32 @@ export default function Home() {
       ...nuevaRespuesta,
     }));
   };
-  const handleEnviarRequest = async () => {
-    if (!dataRegister || !respuestas || !id) return;
+
+  const handleGuardarInfo = (nuevaRespuesta: any) => {
+    setRutasMenores((prevRespuestas) => ({
+      ...prevRespuestas,
+      ...nuevaRespuesta,
+    }));
+  };
+
+  const handleSaveInfo = async () => {
     try {
-      const response = await enviarRespuestas(
+      const response = await guardarInfo(
+        id,
         dataRegister,
-        respuestas,
         descripciones,
-        id
+        rutasMenores
       );
       console.log(response);
+    } catch (error) {
+      console.error("Hubo un problema en la petición:", error);
+    }
+  };
+
+  const handleEnviarRequest = async () => {
+    if (!respuestas) return;
+    try {
+      const response = await enviarRespuestas(respuestas);
       setResponse(response);
     } catch (error) {
       console.error("Hubo un problema con la petición:", error);
@@ -189,93 +203,92 @@ export default function Home() {
             : "¡Conocer tu empresa nos permitirá acompañarte!"
         }
       />
-        <Routes>
-          <Route
-            path="/"
-            element={<Navigate to="/home/terminos-condiciones" />}
-          />
-          <Route
-            path="terminos-condiciones"
-            element={<TerminosCondiciones />}
-          />
-          <Route
-            path="datos-registro"
-            element={<DatosRegistro dataRegistrada={handleDataRegister} />}
-          />
-          <Route
-            path="talento-humano"
-            element={
-              <TalentoHumano
-                respuestasSeleccionadas={handleRespuestas}
-                respuestasDescripciones={handDescripciones}
-              />
-            }
-          />
-          <Route
-            path="tecnologia-transformacion-digital"
-            element={
-              <TecnologiaTransformacionDigital
-                respuestasSeleccionadas={handleRespuestas}
-                respuestasDescripciones={handDescripciones}
-              />
-            }
-          />
-          <Route
-            path="mercados"
-            element={
-              <Mercados
-                respuestasSeleccionadas={handleRespuestas}
-                respuestasDescripciones={handDescripciones}
-              />
-            }
-          />
-          <Route
-            path="financiera"
-            element={
-              <Financiera
-                respuestasSeleccionadas={handleRespuestas}
-                respuestasDescripciones={handDescripciones}
-              />
-            }
-          />
-          <Route
-            path="legal"
-            element={
-              <Legal
-                respuestasSeleccionadas={handleRespuestas}
-                respuestasDescripciones={handDescripciones}
-              />
-            }
-          />
-          <Route
-            path="modelo-operativo"
-            element={
-              <ModeloOperativo
-                respuestasSeleccionadas={handleRespuestas}
-                respuestasDescripciones={handDescripciones}
-              />
-            }
-          />
-          <Route
-            path="ambiental"
-            element={
-              <Ambiental
-                respuestasSeleccionadas={handleRespuestas}
-                respuestasDescripciones={handDescripciones}
-                enviarRequest={handleEnviarRequest}
-              />
-            }
-          />
-          <Route
-            path="resultados-autodiagnostico"
-            element={
-              <Resultados
-                response={response}
-                enviarRequestCorreos={handleEnviarAutomatizacionCorreo}
-              />
-            }
-          />
-        </Routes>
+      <Routes>
+        <Route
+          path="/"
+          element={<Navigate to="/home/terminos-condiciones" />}
+        />
+        <Route path="terminos-condiciones" element={<TerminosCondiciones />} />
+        <Route
+          path="datos-registro"
+          element={<DatosRegistro dataRegistrada={handleDataRegister} />}
+        />
+        <Route
+          path="talento-humano"
+          element={
+            <TalentoHumano
+              respuestasSeleccionadas={handleRespuestas}
+              respuestasDescripciones={handDescripciones}
+            />
+          }
+        />
+        <Route
+          path="tecnologia-transformacion-digital"
+          element={
+            <TecnologiaTransformacionDigital
+              respuestasSeleccionadas={handleRespuestas}
+              respuestasDescripciones={handDescripciones}
+            />
+          }
+        />
+        <Route
+          path="mercados"
+          element={
+            <Mercados
+              respuestasSeleccionadas={handleRespuestas}
+              respuestasDescripciones={handDescripciones}
+            />
+          }
+        />
+        <Route
+          path="financiera"
+          element={
+            <Financiera
+              respuestasSeleccionadas={handleRespuestas}
+              respuestasDescripciones={handDescripciones}
+            />
+          }
+        />
+        <Route
+          path="legal"
+          element={
+            <Legal
+              respuestasSeleccionadas={handleRespuestas}
+              respuestasDescripciones={handDescripciones}
+            />
+          }
+        />
+        <Route
+          path="modelo-operativo"
+          element={
+            <ModeloOperativo
+              respuestasSeleccionadas={handleRespuestas}
+              respuestasDescripciones={handDescripciones}
+            />
+          }
+        />
+        <Route
+          path="ambiental"
+          element={
+            <Ambiental
+              respuestasSeleccionadas={handleRespuestas}
+              respuestasDescripciones={handDescripciones}
+              enviarRequest={handleEnviarRequest}
+            />
+          }
+        />
+        <Route
+          path="resultados-autodiagnostico"
+          element={
+            <Resultados
+              response={response}
+              enviarRequestCorreos={handleEnviarAutomatizacionCorreo}
+              enviarRutasMenores={handleGuardarInfo}
+              enviarGuardarInfo={handleSaveInfo}
+            />
+          }
+        />
+      </Routes>
       <LogoComplement />
     </>
   );

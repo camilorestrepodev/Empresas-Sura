@@ -27,9 +27,9 @@ interface TallerData {
 }
 
 interface Fecha {
-    Taller: string;
-    Fecha: string;
-    Hora: string;
+  Taller: string;
+  Fecha: string;
+  Hora: string;
 }
 
 export function DatosRegistroTalleres() {
@@ -45,27 +45,14 @@ export function DatosRegistroTalleres() {
   const [responseData, setResponseData] = useState<UserData | null>(null);
   const [digitoVerificacion, setDigitoVerificacion] = useState("");
   const [fechasFiltradas, setFechasFiltradas] = useState<TallerData[]>([]);
-
   const [primerArea, setPrimerArea] = useState("");
   const [segundaArea, setSegundaArea] = useState("");
+  const [areasOptions, setAreasOptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const loadingGif =
     "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/d7d9d0b5-629c-449a-9e69-d1f2178fe8d6.gif";
-
-  const areasOptions = [
-    { value: "Talento Humano", label: "Talento Humano" },
-    {
-      value: "Tecnología y Transformación Digital",
-      label: "Tecnología y Transformación Digital",
-    },
-    { value: "Mercado", label: "Mercado" },
-    { value: "Financiera", label: "Financiera" },
-    { value: "Legal", label: "Legal" },
-    { value: "Modelo Operativo", label: "Modelo Operativo" },
-    { value: "Ambiental", label: "Ambiental" },
-  ];
 
   useEffect(() => {
     if (responseData) {
@@ -109,6 +96,14 @@ export function DatosRegistroTalleres() {
   const handleBlur = async () => {
     try {
       const response = await GetDataId(inputValue);
+      const areas = JSON.parse(response.Areas);
+
+      setAreasOptions(areas);
+      setPrimerArea(areas[0]);
+      setSegundaArea(areas[1]);
+      setValue("primerArea", areas[0]);
+      setValue("segundaArea", areas[1]);
+
       if (response) {
         setResponseData(response);
       } else {
@@ -154,31 +149,17 @@ export function DatosRegistroTalleres() {
       Hora: fecha.Hora.toUpperCase(),
     }));
 
-    const selectedFechasCorreos: {[key: string]: string } | null = fechasFiltradas.reduce(
-      (acc: {[key: string]: string}, fecha: Fecha, index) => {
-        const tallerKey = `taller${index + 1}`;
-        acc[tallerKey] =  fecha.Taller,
-        acc[`fecha${index + 1}`] = fecha.Fecha,
-        acc[`hora${index + 1}`] = formatHora(fecha.Hora)
-        return acc;
-      },
-      {}
-    );
-
-    function formatHora(hora: string): string {
-      let [hours, minutes] = hora.split(":");
-      let period = "AM";
-
-      let parsedHours = parseInt(hours);
-      if (parsedHours >= 12) {
-        period = "PM";
-        if (parsedHours > 12) parsedHours -= 12;
-      } else if (parsedHours === 0) {
-        parsedHours = 12;
-      }
-
-      return `${parsedHours}:${minutes} ${period}`;
-    }
+    const selectedFechasCorreos: { [key: string]: string } | null =
+      fechasFiltradas.reduce(
+        (acc: { [key: string]: string }, fecha: Fecha, index) => {
+          const tallerKey = `taller${index + 1}`;
+          acc[tallerKey] = fecha.Taller;
+          acc[`fecha${index + 1}`] =  new Date(fecha.Fecha).toLocaleDateString();
+          acc[`hora${index + 1}`] = fecha.Hora.toUpperCase();
+          return acc;
+        },
+        {}
+      );
 
     const requestBody = {
       numeroDocumento,
@@ -223,7 +204,7 @@ export function DatosRegistroTalleres() {
     if (primerArea && segundaArea) {
       handleAreasChange();
     }
-  }, [segundaArea]);
+  }, [primerArea, segundaArea]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -253,7 +234,7 @@ export function DatosRegistroTalleres() {
                 <select
                   id="tipoDocumento"
                   defaultValue={"seleccionar"}
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                   {...field}
                 >
                   <option value="seleccionar" disabled>
@@ -277,7 +258,7 @@ export function DatosRegistroTalleres() {
             </label>
             <input
               id="numeroDocumento"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               type="text"
               placeholder="Ej. 123456789"
               value={inputValue}
@@ -311,7 +292,7 @@ export function DatosRegistroTalleres() {
             </label>
             <input
               id="nombreCompleto"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               type="text"
               placeholder="Ej. Martha Gómez"
               {...register("nombreCompleto", {
@@ -346,7 +327,7 @@ export function DatosRegistroTalleres() {
             </label>
             <input
               id="nombreEmpresa"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               type="text"
               placeholder="Ingresa el nombre de la empresa"
               {...register("nombreEmpresa", {
@@ -374,7 +355,7 @@ export function DatosRegistroTalleres() {
             </label>
             <input
               id="correoElectronico"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               type="email"
               placeholder="Ingresa tu correo"
               {...register("correoElectronico", {
@@ -401,7 +382,7 @@ export function DatosRegistroTalleres() {
             </label>
             <input
               id="celular"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               type="tel"
               placeholder="Ingresa tu celular"
               pattern="[0-9]{10}"
@@ -433,7 +414,7 @@ export function DatosRegistroTalleres() {
             </label>
             <input
               id="cargo"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               type="text"
               placeholder="Ingresa tu cargo"
               {...register("cargo", {
@@ -466,20 +447,25 @@ export function DatosRegistroTalleres() {
               render={({ field }) => (
                 <select
                   id="primerArea"
-                  defaultValue={"seleccionar"}
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+                  defaultValue={""}
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                   {...field}
                   onChange={(e) => {
                     field.onChange(e);
                     setPrimerArea(e.target.value);
                   }}
+                  disabled
                 >
-                  <option value="seleccionar" disabled>
+                  <option value="" disabled>
                     Selecciona una opción
                   </option>
                   {areasOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
+                    <option
+                      key={option}
+                      value={option}
+                      disabled={option === primerArea}
+                    >
+                      {option}
                     </option>
                   ))}
                 </select>
@@ -499,20 +485,25 @@ export function DatosRegistroTalleres() {
               render={({ field }) => (
                 <select
                   id="segundaArea"
-                  defaultValue={"seleccionar"}
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+                  defaultValue={""}
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                   {...field}
                   onChange={(e) => {
                     field.onChange(e);
                     setSegundaArea(e.target.value);
                   }}
+                  disabled
                 >
-                  <option value="seleccionar" disabled>
+                  <option value="" disabled>
                     Selecciona una opción
                   </option>
                   {areasOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
+                    <option
+                      key={option}
+                      value={option}
+                      disabled={option === segundaArea}
+                    >
+                      {option}
                     </option>
                   ))}
                 </select>
@@ -541,7 +532,7 @@ export function DatosRegistroTalleres() {
                       className="h-[56px] w-[250px] rounded-[28px] bg-[#2D6DF6] text-white text-[18px] font-[700]"
                       disabled={loading}
                     >
-                     {loading ? "Enviando..." : "Quiero inscribirme"}
+                      {loading ? "Enviando..." : "Quiero inscribirme"}
                     </button>
                   </div>
                 </div>

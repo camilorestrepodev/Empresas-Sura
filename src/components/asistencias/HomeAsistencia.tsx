@@ -141,7 +141,7 @@ const HomeAsistencia = () => {
             Te invitamos a evaluar tu experiencia
           </p>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label
               htmlFor="tipoDocumento"
               className="font-semibold text-[18px]"
@@ -156,7 +156,7 @@ const HomeAsistencia = () => {
                 <select
                   id="tipoDocumento"
                   defaultValue=""
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                   {...field}
                 >
                   <option value="" disabled>
@@ -169,14 +169,14 @@ const HomeAsistencia = () => {
             />
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <div className="flex flex-col">
               <label htmlFor="numeroDocumento" className="font-semibold">
                 2. Número de documento:
               </label>
               <input
                 id="numeroDocumento"
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 type="text"
                 placeholder="Ej. 123456789"
                 value={inputValue}
@@ -203,7 +203,7 @@ const HomeAsistencia = () => {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
               3. Taller al que asistió <span className="text-red-600">*</span>
             </label>
@@ -213,7 +213,7 @@ const HomeAsistencia = () => {
               rules={{ required: "El taller es requerido" }}
               render={({ field }) => (
                 <select
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                   defaultValue=""
                   {...field}
                 >
@@ -230,7 +230,7 @@ const HomeAsistencia = () => {
             />
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label
               htmlFor="nombreCompleto"
               className="font-semibold text-[18px]"
@@ -239,7 +239,7 @@ const HomeAsistencia = () => {
             </label>
             <input
               id="nombreCompleto"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               type="text"
               placeholder="Ej. Martha Gómez"
               {...register("nombreCompleto", {
@@ -268,13 +268,13 @@ const HomeAsistencia = () => {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
               5. Nombre de la empresa: <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               placeholder="Ej: Empresa"
               {...register("nombreEmpresa", {
                 required: {
@@ -295,13 +295,13 @@ const HomeAsistencia = () => {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
               6. Correo electrónico: <span className="text-red-600">*</span>
             </label>
             <input
               type="email"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               placeholder="Ingresa tu correo"
               {...register("correoElectronico", {
                 required: {
@@ -321,13 +321,13 @@ const HomeAsistencia = () => {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
               7. Número de celular: <span className="text-red-600">*</span>
             </label>
             <input
               type="tel"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               placeholder="Ingresa tu celular"
               pattern="[0-9]{10}"
               {...register("celular", {
@@ -352,13 +352,13 @@ const HomeAsistencia = () => {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
               8. Cargo: <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
-              className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+              className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
               placeholder="Ingresa tu cargo"
               {...register("cargo", {
                 required: {
@@ -378,7 +378,7 @@ const HomeAsistencia = () => {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col ">
+          <div className="mt-3 flex flex-col ">
             <label className="text-lg font-semibold text-center sm:text-left text-[18px] xxs:text-left">
               9. ¿Cómo calificas el contenido de este taller?{" "}
               <span className="text-red-600">*</span>
@@ -416,7 +416,7 @@ const HomeAsistencia = () => {
             </div>
           </div>
 
-          <div className="flex flex-col mt-5">
+          <div className="flex flex-col mt-3">
             <label className="text-lg font-semibold text-center sm:text-left text-[18px]">
               10. ¿El espacio aportó herramientas y/o para la gestión de tu
               empresa? <span className="text-red-500">*</span>
@@ -473,7 +473,7 @@ const HomeAsistencia = () => {
             )}
           </div>
 
-          <div className="flex flex-col mt-5">
+          <div className="flex flex-col mt-3">
             <label className="text-lg font-semibold text-center sm:text-left text-[18px] xxs:text-left">
               11. ¿Te gustaría acceder a la ruta de Platzi?{" "}
               <span className="text-red-500">*</span>
@@ -486,7 +486,7 @@ const HomeAsistencia = () => {
                 rules={{ required: "Esta pregunta es obligatoria" }}
                 render={({ field }) => (
                   <select
-                    className="h-[40px] rounded-xl border border-[#2D6DF6] px-3"
+                    className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                     defaultValue=""
                     onChange={(e) => {
                       field.onChange(e);
@@ -520,7 +520,7 @@ const HomeAsistencia = () => {
                   <input
                     type="email"
                     placeholder="Edinson@gmail.com"
-                    className="w-full h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                    className="w-full h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                     {...register("correoPlatzi1", {
                       required: "Este campo es obligatorio",
                       pattern: {
@@ -532,7 +532,7 @@ const HomeAsistencia = () => {
                   <input
                     type="email"
                     placeholder="Andrea@gmail.com"
-                    className="w-full h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                    className="w-full h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                     {...register("correoPlatzi2", {
                       required: "Este campo es obligatorio",
                       pattern: {
@@ -556,7 +556,7 @@ const HomeAsistencia = () => {
             )}
           </div>
 
-          <div className="mt-5 flex flex-col">
+          <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
               12. ¿Quieres conocer cómo podemos acompañarte desde SURA para
               proteger la información que manejas de tu empresa y de tus

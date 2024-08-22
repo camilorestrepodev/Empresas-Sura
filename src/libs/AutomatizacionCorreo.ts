@@ -16,7 +16,7 @@ const enviarRespuestasCorreos = async (dataRegister: any, response: any) => {
     Mercados:
       "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADMERCADO_Link.pdf",
     "Tecnología y Transformación Digital":
-      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADTECNOLOGI%CC%81AYTRANSFORMACIO%CC%81NDIGITAL_link.pdf",
+      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADTECNOLOGIAYTRANSFORMACIONDIGITAL_link.pdf",
   };
 
   const nombresVerticales: NombresVerticalesType = {

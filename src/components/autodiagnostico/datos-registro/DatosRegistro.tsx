@@ -114,7 +114,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                   <select
                     id="tipoDocumento"
                     defaultValue=""
-                    className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                    className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                     {...field}
                   >
                     <option value="" disabled>
@@ -161,7 +161,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                   render={({ field }) => (
                     <input
                       id="numeroDocumento"
-                      className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                      className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                       type="text"
                       placeholder="Ej. 123456789"
                       {...field}
@@ -202,7 +202,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               </label>
               <input
                 id="nombreCompleto"
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 type="text"
                 placeholder="Ej. Martha Gómez"
                 {...register("nombreCompleto", {
@@ -237,7 +237,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               </label>
               <input
                 id="cargo"
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 type="text"
                 placeholder="Ingresa tu cargo"
                 {...register("cargo", {
@@ -269,7 +269,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               </label>
               <input
                 id="nombreEmpresa"
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 type="text"
                 placeholder="Ingresa el nombre de la empresa"
                 {...register("nombreEmpresa", {
@@ -298,7 +298,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               <select
                 id="departamentoEmpresa"
                 defaultValue={"seleccionar"}
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 {...register("departamentoEmpresa", {
                   validate: (value) =>
                     value !== "" ||
@@ -328,7 +328,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               <select
                 id="sectorEconomico"
                 defaultValue={"seleccionar"}
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 {...register("sectorEconomico", {
                   validate: (value) =>
                     value !== "" ||
@@ -357,7 +357,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               </label>
               <input
                 id="correoElectronico"
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 type="email"
                 placeholder="Ingresa tu correo"
                 {...register("correoElectronico", {
@@ -384,7 +384,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               </label>
               <input
                 id="celular"
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-5"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 type="tel"
                 placeholder="Ingresa tu celular"
                 pattern="[0-9]{10}"
