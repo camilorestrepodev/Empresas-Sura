@@ -1,33 +1,26 @@
+import {NombresVerticales} from "../models/NombresVerticales.ts";
+
 const enviarRespuestasCorreos = async (dataRegister: any, response: any) => {
   type RutasPdfType = Record<string, string>;
-  type NombresVerticalesType = Record<string, string>;
 
   const rutasPdf: RutasPdfType = {
-    "Talento Humano":
+    TH:
       "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADTALENTOHUMANO_Link.pdf",
-    Financiera:
+    F:
       "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADFINANCIERA_Link.pdf",
-    "Modelo Operativo":
+    MO:
       "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADMODELOOPERATIVO_Link.pdf",
-    Ambiental:
+    A:
       "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADAMBIENTAL_link.pdf",
-    Legal:
+    L:
       "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADLEGAL_Link.pdf",
-    Mercados:
+    M:
       "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADMERCADO_Link.pdf",
-    "Tecnología y Transformación Digital":
+    TTD:
       "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADTECNOLOGIAYTRANSFORMACIONDIGITAL_link.pdf",
   };
 
-  const nombresVerticales: NombresVerticalesType = {
-    TH: "Talento Humano",
-    TTD: "Tecnología y Transformación Digital",
-    M: "Mercados",
-    F: "Financiera",
-    L: "Legal",
-    MO: "Modelo Operativo",
-    A: "Ambiental",
-  };
+  const nombresVerticales = NombresVerticales;
 
   const { respuestasFormulario } = response;
 
@@ -55,7 +48,7 @@ const rutasMenoresPdf: Record<string, string> = menoresPorcentajesVerticalesOrde
   (acc: Record<string, string>, vertical: any, index: number) => {
     const nombreVertical = nombresVerticales[vertical.nombreVertical];
     acc[`nombre${index + 1}`] = nombreVertical;
-    acc[`ruta${index + 1}`] = rutasPdf[nombreVertical];
+    acc[`ruta${index + 1}`] = rutasPdf[vertical.nombreVertical];
     return acc;
   },
   {} as Record<string, string>

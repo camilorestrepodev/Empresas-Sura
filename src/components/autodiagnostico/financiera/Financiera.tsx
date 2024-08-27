@@ -65,7 +65,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
           id="section6"
         >
           <h2 className="text-[#2D6DF6] text-center font-[700] text-[32px] sm:text-left">
-            Financiera
+            Financiero
           </h2>
           <p className="mt-3 text-center text-lg sm:text-left">
           Capacidad para acceder, apalancar y gestionar los recursos.

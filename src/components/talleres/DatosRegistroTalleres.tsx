@@ -49,6 +49,7 @@ export function DatosRegistroTalleres() {
   const [segundaArea, setSegundaArea] = useState("");
   const [areasOptions, setAreasOptions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [userDataLoaded, setUserDataLoaded] = useState(true);
   const navigate = useNavigate();
 
   const loadingGif =
@@ -95,7 +96,19 @@ export function DatosRegistroTalleres() {
 
   const handleBlur = async () => {
     try {
+      setUserDataLoaded(true);
+      
       const response = await GetDataId(inputValue);
+
+      if (response) {
+        setResponseData(response);
+      } else {
+        setResponseData(null);
+        setUserDataLoaded(false);
+        
+        return;
+      }
+      
       const areas = JSON.parse(response.Areas);
 
       setAreasOptions(areas);
@@ -103,13 +116,8 @@ export function DatosRegistroTalleres() {
       setSegundaArea(areas[1]);
       setValue("primerArea", areas[0]);
       setValue("segundaArea", areas[1]);
-
-      if (response) {
-        setResponseData(response);
-      } else {
-        setResponseData(null);
-      }
     } catch (error) {
+      setUserDataLoaded(false);
       console.error("Error fetching data:", error);
     }
   };
@@ -454,7 +462,7 @@ export function DatosRegistroTalleres() {
                     field.onChange(e);
                     setPrimerArea(e.target.value);
                   }}
-                  disabled
+                  disabled={userDataLoaded}
                 >
                   <option value="" disabled>
                     Selecciona una opción
@@ -492,7 +500,7 @@ export function DatosRegistroTalleres() {
                     field.onChange(e);
                     setSegundaArea(e.target.value);
                   }}
-                  disabled
+                  disabled={userDataLoaded}
                 >
                   <option value="" disabled>
                     Selecciona una opción

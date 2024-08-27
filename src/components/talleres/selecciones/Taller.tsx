@@ -21,10 +21,10 @@ export function Taller({ responseFecha }: TallerProps) {
     { nombre: "Legal", path: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/2101d10f-ce5c-4ac1-bc05-5c87617117cc.png" },
     { nombre: "Mercado", path: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/b58f1604-7493-42ee-b0c3-1d68ea112e6e.png" },
     { nombre: "Ambiental", path: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/91a201a0-ef76-4d25-b427-961a1c3605ea.png" },
-    { nombre: "Financiera", path: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/9b2a0cbd-fd26-413c-bdcc-a5f24cb696eb.png" },
+    { nombre: "Financiero", path: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/9b2a0cbd-fd26-413c-bdcc-a5f24cb696eb.png" },
     { nombre: "Modelo Operativo", path: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/83d47a2f-d27e-430f-85ac-67b292871122.png" },
     {
-      nombre: "Tecnología y Transformación Digital",
+      nombre: "Tecnología y transformación digital",
       path: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/0da52637-dd2b-437c-aaa0-e3ae09d8e3c5.png",
     },
   ];
@@ -36,7 +36,7 @@ export function Taller({ responseFecha }: TallerProps) {
           (taller) => taller.Vertical === vertical
         );
 
-        const imagenVertical = images.find((img) => img.nombre === vertical);
+        const imagenVertical = images.find((img) => img.nombre.toLowerCase() === vertical.toLowerCase());
 
         return (
           <article

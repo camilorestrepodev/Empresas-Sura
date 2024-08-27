@@ -250,7 +250,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                     message: "El cargo no debe superar los 50 caracteres",
                   },
                   pattern: {
-                    value: /^[a-zA-Z0-9\s]*$/,
+                    value: /^[a-zA-Z0-9\sñÑáéíóúÁÉÍÓÚ]*$/,
                     message:
                       "El cargo no debe contener símbolos extraños ni iconos",
                   },

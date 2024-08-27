@@ -509,8 +509,8 @@ const HomeAsistencia = () => {
               </div>
             )}
             {showEmailInputs && (
-              <div className="mt-5">
-                <label className="block justify-around text-lg font-semibold">
+              <div className="mt-2">
+                <label className="block justify-around text-sm font-semibold">
                   Por favor escribe 2 correos electrónicos a los que se
                   otorgarán las licencias de Platzi por 3 meses. Esta licencia
                   se hará efectiva una vez haya asistido a los talleres
@@ -522,7 +522,6 @@ const HomeAsistencia = () => {
                     placeholder="Edinson@gmail.com"
                     className="w-full h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                     {...register("correoPlatzi1", {
-                      required: "Este campo es obligatorio",
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                         message: "Ingresa un correo electrónico valido",
@@ -534,7 +533,6 @@ const HomeAsistencia = () => {
                     placeholder="Andrea@gmail.com"
                     className="w-full h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                     {...register("correoPlatzi2", {
-                      required: "Este campo es obligatorio",
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                         message: "Ingresa un correo electrónico valido",

@@ -60,8 +60,8 @@ export const informacionRutas: informacionRutas[] = [
     itemsTextoTercero:[]
   },
   {
-    nombre: "Tecnología y Transformación Digital",
-    titulo: "Ruta de Competitividad de Tecnología y Transformación Digital",
+    nombre: "Tecnología y transformación digital",
+    titulo: "Ruta de Competitividad de Tecnología y transformación digital",
     descripcion:
       "En esta ruta podrás apalancar la estrategia de tu empresa en el desarrollo, uso y apropiación oportuna de las capacidades tecnológicas.",
     subtitulo: "Esta se compone de tres módulos: ",
@@ -89,8 +89,8 @@ export const informacionRutas: informacionRutas[] = [
     itemsTextoTercero:[]
   },
   {
-    nombre: "Financiera",
-    titulo: "Ruta de Competitividad de Financiera",
+    nombre: "Financiero",
+    titulo: "Ruta de Competitividad de Financiero",
     subtitulo: "Esta se compone de tres módulos: ",
     items: ["1. Liquidez", "2. Planeación financiera", "3. Gestión tributaria"],
     img: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/9b2a0cbd-fd26-413c-bdcc-a5f24cb696eb.png",
@@ -148,8 +148,8 @@ export const informacionRutas: informacionRutas[] = [
     itemsTextoTercero:[]
   },
   {
-    nombre: "Mercados",
-    titulo: "Ruta de Competitividad de Mercados",
+    nombre: "Mercado",
+    titulo: "Ruta de Competitividad de Mercado",
     subtitulo: "Esta se compone de tres módulos:",
     items: [
       "1. Estrategía",

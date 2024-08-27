@@ -5,6 +5,7 @@ import { informacionRutas } from "./InformacionRutas.data";
 import "../../../styles/Spinner.css";
 import { useNavigate } from "react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
+import {NombresVerticales} from "../../../models/NombresVerticales.ts";
 
 export default function Resultados({
   response,
@@ -50,15 +51,7 @@ export default function Resultados({
 
   const sectionResultados = useRef<HTMLDivElement>(null);
 
-  const nombresVerticales: Record<string, string> = {
-    TH: "Talento Humano",
-    F: "Financiera",
-    MO: "Modelo Operativo",
-    A: "Ambiental",
-    L: "Legal",
-    M: "Mercados",
-    TTD: "Tecnología y Transformación Digital",
-  };
+  const nombresVerticales = NombresVerticales;
 
   useEffect(() => {
     window.scrollTo(0, 0);
