@@ -4,13 +4,14 @@
 import { useEffect, useState } from "react";
 
 import { NavLink } from "react-router-dom";
+import {Constants} from "../Constants.ts";
 
 export const Footer = () => {
-  const facebook = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/3163eb77-5c86-44bb-9787-09f8041c1123.png";
-  const instagram = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/b4867fa4-b790-459c-89b2-6b7b34e0e84f.png";
-  const twitter = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/886c6c1f-93e4-4cc5-9ca2-ad599481e876.png";
-  const linkedin = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/62d2685f-a4c8-496a-af05-61fef46ba51f.png";
-  const youtube = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/0ca21d06-b6b9-47e6-986d-a822ab8fe0fc.png";
+  const facebook = Constants.FOOTER_IMAGES.FACEBOOK;
+  const instagram = Constants.FOOTER_IMAGES.INSTAGRAM;
+  const twitter = Constants.FOOTER_IMAGES.TWITTER;
+  const linkedin = Constants.FOOTER_IMAGES.LINKEDIN;
+  const youtube = Constants.FOOTER_IMAGES.YOUTUBE;
 
 
   const [isMobile, setIsMobile] = useState(false);

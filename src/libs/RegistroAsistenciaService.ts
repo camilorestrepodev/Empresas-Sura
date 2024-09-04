@@ -1,5 +1,7 @@
+import {Constants} from "../Constants.ts";
+
 export const enviarRespuestasAsistencia = async (requestBody: any) => {
-    const URL = "https://prod-103.westus.logic.azure.com:443/workflows/b0479d24370b42eb9f387632738ac527/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=09Cl_UJCuQcaqWpiuKt56dLS6s0OMoTK5Yln_MFvd2g";
+    const URL = Constants.REGISTRO_ASISTENCIA_API_URL;
   
     try {
       const response = await fetch(URL, {

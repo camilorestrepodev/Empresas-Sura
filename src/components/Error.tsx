@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
+import {Constants} from "../Constants.ts";
 const Error = () => {
+  const errorImage = Constants.ERROR_IMAGE;
+  
   return (
     <>
       <div className="text-center flex flex-col justify-center items-center py-40">
@@ -9,7 +12,7 @@ const Error = () => {
         </h1>
         <p className="text-xl font-bold  mt-5">No se encontró la pagina solicitada</p>
         <img
-          src="https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/35101c16-11c4-4521-9fb9-13a79585acfa.png"
+          src={errorImage}
           alt=""
           className="w-[300px] mx-auto mt-5"
         />

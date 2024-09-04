@@ -6,6 +6,7 @@ import "../../../styles/Spinner.css";
 import { useNavigate } from "react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {NombresVerticales} from "../../../models/NombresVerticales.ts";
+import {Constants} from "../../../Constants.ts";
 
 export default function Resultados({
   response,
@@ -13,9 +14,8 @@ export default function Resultados({
   enviarRutasMenores,
   enviarGuardarInfo,
 }: any) {
-  const loading =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/d7d9d0b5-629c-449a-9e69-d1f2178fe8d6.gif";
-
+  const loading = Constants.LOADING_GIF;
+    
   const [rutasEnviadas, setRutasEnviadas] = useState(false);
   const navigate = useNavigate();
   const getColorClass = (

@@ -1,8 +1,10 @@
+import {Constants} from "../Constants.ts";
+
 const GetDataId = async (numeroCedula: string) => {
 
   try {
     const url = new URL(
-      "https://prod-12.westus.logic.azure.com:443/workflows/4ddf89a44dac41aca3f4960989f4b260/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YJfwpoT4YG7HU0oineZYhvvKas5l78aPgKFwE4QrbfQ"
+      Constants.GET_DATA_ID_API_URL
     );
 
     url.searchParams.append("cedula", numeroCedula);

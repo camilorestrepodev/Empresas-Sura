@@ -1,7 +1,8 @@
+import {Constants} from "../Constants.ts";
 
 export const Header = () => {
 
-  const logo = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/3c6d67af-ca66-463e-8b41-0975018cc879.png"
+  const logo = Constants.LOGO_SURA_IMAGE;
   return (
     <>
       <div className="bg-[#2D6DF6] h-[100px] px-[30px] py-[70px] md:px-[70px] lg:px-[130px]">

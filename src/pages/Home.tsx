@@ -22,19 +22,14 @@ import ModeloOperativo from "../components/autodiagnostico/modelo-operativo/Mode
 import Ambiental from "../components/autodiagnostico/ambiental/Ambiental";
 import Resultados from "../components/autodiagnostico/resultados/Resultados";
 import guardarInfo from "../libs/GuardarInfo";
+import {Constants} from "../Constants.ts";
 
 export default function Home() {
-  const fondoResultados =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/72f9ecb6-ab1f-4fc6-9e60-3732a21d9d38.png";
-  const fondoHome =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/9a072391-b9dc-437c-bac8-78ec0d8df38a.png";
-  const fondoMovilResultados =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/b26cf40c-c10e-421f-a143-90394d962fae.png";
-  const fondoMovilHome =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/149c3e0d-f694-48b4-bb91-7911172398ac.png";
-
-  const loadingGif =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/d7d9d0b5-629c-449a-9e69-d1f2178fe8d6.gif";
+  const fondoResultados = Constants.FONDO_RESULTADOS;
+  const fondoHome = Constants.FONDO_HOME;
+  const fondoMovilResultados = Constants.FONDO_MOVIL_RESULTADOS;
+  const fondoMovilHome = Constants.FONDO_MOVIL_HOME;
+  const loadingGif = Constants.LOADING_GIF;
 
   const [response, setResponse] = useState(null);
   const [respuestas, setRespuestas] = useState({});
@@ -194,7 +189,7 @@ export default function Home() {
       <InfoSteps
         texto={
           location.pathname === "/home/resultados-autodiagnostico"
-            ? "¡Es momento de seguir adelante! Hemos analizado tus resultados y desarrollado contenidos que que te serán útiles para el cierre de brechas y garantizar el éxito de tu empresa."
+            ? "¡Es momento de seguir adelante! Hemos analizado tus resultados y desarrollado contenidos que te serán útiles para el cierre de brechas y garantizar el éxito de tu empresa."
             : "Para avanzar, es necesario dar pasos en la dirección correcta. Por esto, te invitamos a realizar un autodiagnóstico diseñado para entender las oportunidades de desarrollo que hemos evidenciado como más relevantes para nuestros empresarios."
         }
         subtexto={

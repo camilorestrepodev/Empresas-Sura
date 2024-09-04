@@ -1,7 +1,8 @@
+import {Constants} from "../Constants.ts";
+
 const enviarRespuestas = async (respuestas: any) => {
 
-  const URL =
-    "https://prod-26.westus.logic.azure.com:443/workflows/9461110b715845e293f8328c11cc9e32/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=WH0JZ3HDoA6UUYNrltEhsnXSamiTkdHWxrQX9M3FJnY";
+  const URL = Constants.AUTO_DIAGNOSTICO_API_URL;
   try {
     const response = await fetch(URL, {
       method: "POST",

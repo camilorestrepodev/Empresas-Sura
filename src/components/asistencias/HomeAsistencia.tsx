@@ -5,6 +5,7 @@ import { Controller, useForm, useWatch } from "react-hook-form";
 import { enviarRespuestasAsistencia } from "../../libs/RegistroAsistenciaService";
 import { useNavigate } from "react-router-dom";
 import GetTaller from "../../libs/GetTaller";
+import {Constants} from "../../Constants.ts";
 
 interface TallerData {
   taller: string;
@@ -27,10 +28,8 @@ const HomeAsistencia = () => {
 
   const navigate = useNavigate();
 
-  const Star1 =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/0af37c56-752a-4013-a6e8-ecba6dd3e9d7.png";
-  const Star5 =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/693e086d-8c2e-484c-8f08-65865b612311.png";
+  const Star1 = Constants.START1;
+  const Star5 = Constants.START5;
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedOption = e.target.value;

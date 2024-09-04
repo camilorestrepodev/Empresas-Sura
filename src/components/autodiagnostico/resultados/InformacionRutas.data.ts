@@ -1,3 +1,4 @@
+import {Constants} from "../../../Constants.ts";
 
 
 export interface informacionRutas {
@@ -23,7 +24,7 @@ export const informacionRutas: informacionRutas[] = [
       "En esta ruta podrás desarrollar la capacidad para contar con el equipo humano necesario y conocer sobre el cumplimiento regulatorio como empleador de la promoción y prevención de la Seguridad y Salud en el Trabajo (SST).",
     subtitulo: "Esta se compone de tres módulos:",
     items: ["1. SST", "2. Atracción y selección", "3. Formación y desarrollo"],
-    img: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/b3430a9c-e034-4916-8b6c-2714c8984a64.png",
+    img: Constants.IMAGES_VERTICALES.TH,
     textoPrincipal:
       "Complementa lo aprendido en los talleres con los siguientes contenidos multimedia:",
     itemsTextoPrincipal: [
@@ -45,7 +46,7 @@ export const informacionRutas: informacionRutas[] = [
     titulo: "Ruta de Competitividad de Modelo Operativo",
     subtitulo: "Esta se compone de dos módulos: ",
     items: ["1. Gestión de riesgos.", "2. Cadena de abastecimiento."],
-    img: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/83d47a2f-d27e-430f-85ac-67b292871122.png",
+    img: Constants.IMAGES_VERTICALES.MO,
     descripcion:
       "En esta ruta podrás desarrollar la capacidad para generar eficiencia, confiabilidad y gestión de los riesgos dándole continuidad a la operación. ",
     textoPrincipal:
@@ -70,7 +71,7 @@ export const informacionRutas: informacionRutas[] = [
       "2. Manejo y seguridad de la información.",
       "3. Transformación del negocio",
     ],
-    img: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/0da52637-dd2b-437c-aaa0-e3ae09d8e3c5.png",
+    img: Constants.IMAGES_VERTICALES.TTD,
     textoPrincipal:
       "Pon en práctica lo aprendido en el taller “Herramientas digitales” con los siguientes documentos: ",
     itemsTextoPrincipal: [
@@ -93,7 +94,7 @@ export const informacionRutas: informacionRutas[] = [
     titulo: "Ruta de Competitividad de Financiero",
     subtitulo: "Esta se compone de tres módulos: ",
     items: ["1. Liquidez", "2. Planeación financiera", "3. Gestión tributaria"],
-    img: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/9b2a0cbd-fd26-413c-bdcc-a5f24cb696eb.png",
+    img: Constants.IMAGES_VERTICALES.F,
     descripcion: "En la ruta podrás desarrollar la capacidad para acceder, apalancar y gestionar los recursos financieros de tu empresa.",
     textoPrincipal:
       "Descubre cómo gestionar tu capital con los siguientes contenidos: ",
@@ -112,7 +113,7 @@ export const informacionRutas: informacionRutas[] = [
     titulo: "Ruta de Competitividad de Ambiental",
     subtitulo: "Esta se compone de dos módulos:",
     items: ["1. Estrategia", "2. Ecoficiencia"],
-    img: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/91a201a0-ef76-4d25-b427-961a1c3605ea.png",
+    img: Constants.IMAGES_VERTICALES.A,
     descripcion:
       "En esta ruta podrás desarrollar la capacidad para generar eficiencia, confiabilidad y gestión de los riesgos dándole continuidad a la operación. ",
     textoPrincipal:
@@ -131,7 +132,7 @@ export const informacionRutas: informacionRutas[] = [
     titulo: "Ruta de Competitividad de Legal",
     subtitulo: "Subtítulo de la ruta de Legal",
     items: ["1. Societario y gobierno corporativo.", "2. Contractual.", "3. Propiedad intelectual, información y consumidor."],
-    img: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/2101d10f-ce5c-4ac1-bc05-5c87617117cc.png",
+    img: Constants.IMAGES_VERTICALES.L,
     descripcion:
       "En esta ruta podrás encontrar contenidos e información relevante para que tu empresa se gestione desde la parte legal y tenga oportunidades para seguir potenciándose en el mercado.",
     textoPrincipal:
@@ -156,7 +157,7 @@ export const informacionRutas: informacionRutas[] = [
       "2. Experiencia de cliente",
       "3. Gestión de marca",
     ],
-    img: "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/b58f1604-7493-42ee-b0c3-1d68ea112e6e.png",
+    img: Constants.IMAGES_VERTICALES.M,
     descripcion:
       "En esta ruta podrás desarrollar la capacidad de leer el entorno, entender a los consumidores y gestionar nuevos segmentos de mercado a partir de propuestas de valor.  ",
     textoPrincipal:

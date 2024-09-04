@@ -1,7 +1,8 @@
+import {Constants} from "../Constants.ts";
+
 const enviarCorreosTalleres = async (dataRegister: any) => {
   
-    const URL =
-      "https://prod-48.westus.logic.azure.com:443/workflows/988102b372fc4c91bacdd96f4c08f8e9/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qtGYvFsbs8h7rMkeEhlMM3i4O0YLNHcjPhE_zvXXgmY";
+    const URL = Constants.AUTOMATIZACION_TALLERES_API_URL;
   
     try {
       const response = await fetch(URL, {

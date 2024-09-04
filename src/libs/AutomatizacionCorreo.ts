@@ -1,23 +1,17 @@
 import {NombresVerticales} from "../models/NombresVerticales.ts";
+import {Constants} from "../Constants.ts";
 
 const enviarRespuestasCorreos = async (dataRegister: any, response: any) => {
   type RutasPdfType = Record<string, string>;
 
   const rutasPdf: RutasPdfType = {
-    TH:
-      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADTALENTOHUMANO_Link.pdf",
-    F:
-      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADFINANCIERA_Link.pdf",
-    MO:
-      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADMODELOOPERATIVO_Link.pdf",
-    A:
-      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADAMBIENTAL_link.pdf",
-    L:
-      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADLEGAL_Link.pdf",
-    M:
-      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADMERCADO_Link.pdf",
-    TTD:
-      "https://comunicaciones.segurossura.com.co/MercadeoEmpresas/Recursos/EmpresaSURA/RUTADECOMPETITIVIDADTECNOLOGIAYTRANSFORMACIONDIGITAL_link.pdf",
+    TH: Constants.RUTAS_PDF.TH,
+    F: Constants.RUTAS_PDF.F,
+    MO: Constants.RUTAS_PDF.MO,
+    A: Constants.RUTAS_PDF.A,
+    L: Constants.RUTAS_PDF.L,
+    M: Constants.RUTAS_PDF.M,
+    TTD: Constants.RUTAS_PDF.TTD,
   };
 
   const nombresVerticales = NombresVerticales;
@@ -59,8 +53,7 @@ const rutasMenoresPdf: Record<string, string> = menoresPorcentajesVerticalesOrde
     rutasMenoresPdf,
   };
 
-  const URL =
-    "https://prod-151.westus.logic.azure.com:443/workflows/a5842fe7453e423cadddd194db7c8284/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=RH9RWhh4CwMpboJ-G1KWngDOdAESmoB2H518Br3SSEM";
+  const URL = Constants.AUTOMATIZACION_CORREO_API_URL;
 
   try {
     const response = await fetch(URL, {

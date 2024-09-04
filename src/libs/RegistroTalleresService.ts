@@ -1,5 +1,7 @@
+import {Constants} from "../Constants.ts";
+
 export const enviarRespuestasTalleres = async (requestBody: any) => {
-  const URL = "https://prod-08.westus.logic.azure.com:443/workflows/c30c3b36b76e4643a70c3268e4fa5bbc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CmMRz7_-qfCBOqoty3Xf473qJKpF7vtTDjGAPzTGtOQ";
+  const URL = Constants.REGISTRO_TALLERES_API_URL;
 
   try {
     const response = await fetch(URL, {

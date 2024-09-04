@@ -1,6 +1,8 @@
+import {Constants} from "../Constants.ts";
+
 const FechaFetch =  async () => {
 
-    const URL = "https://prod-138.westus.logic.azure.com:443/workflows/d7e9a430c198480fa80dcb75cbaa3ed2/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=A8utDwkG6bcFhZY9OMNPGoRJdC80NV5VIz4A_xALiWg";
+    const URL = Constants.FECHA_API_URL
     const fechaActual = new Date().toISOString();
     
     try {

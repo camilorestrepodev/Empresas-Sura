@@ -9,3 +9,5 @@ export const NombresVerticales: NombresVerticalesType = {
     MO: "Modelo Operativo",
     A: "Ambiental",
 };
+
+export const Verticales = Object.values(NombresVerticales);

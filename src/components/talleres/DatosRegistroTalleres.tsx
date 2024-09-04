@@ -7,6 +7,8 @@ import FechaFetch from "../../libs/FechaFetch";
 import { enviarRespuestasTalleres } from "../../libs/RegistroTalleresService";
 import { useNavigate } from "react-router-dom";
 import enviarCorreosTalleres from "../../libs/AutomatizacionTalleres";
+import {Verticales} from "../../models/NombresVerticales.ts";
+import {Constants} from "../../Constants.ts";
 
 interface UserData {
   Nombre: string;
@@ -47,13 +49,13 @@ export function DatosRegistroTalleres() {
   const [fechasFiltradas, setFechasFiltradas] = useState<TallerData[]>([]);
   const [primerArea, setPrimerArea] = useState("");
   const [segundaArea, setSegundaArea] = useState("");
-  const [areasOptions, setAreasOptions] = useState([]);
+  // const [areasOptions, setAreasOptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [userDataLoaded, setUserDataLoaded] = useState(true);
   const navigate = useNavigate();
+  const verticales = Verticales;
 
-  const loadingGif =
-    "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/d7d9d0b5-629c-449a-9e69-d1f2178fe8d6.gif";
+  const loadingGif = Constants.LOADING_GIF;
 
   useEffect(() => {
     if (responseData) {
@@ -111,7 +113,7 @@ export function DatosRegistroTalleres() {
       
       const areas = JSON.parse(response.Areas);
 
-      setAreasOptions(areas);
+      // setAreasOptions(areas);
       setPrimerArea(areas[0]);
       setSegundaArea(areas[1]);
       setValue("primerArea", areas[0]);
@@ -130,11 +132,15 @@ export function DatosRegistroTalleres() {
       const filteredFechas = response.filter(
         (fecha: TallerData) => new Date(fecha.Fecha) > new Date(currentDate)
       );
-      const filteredByAreas = filteredFechas.filter(
-        (fecha: TallerData) =>
-          fecha.Vertical === primerArea || fecha.Vertical === segundaArea
-      );
-      setFechasFiltradas(filteredByAreas);
+      
+      if (primerArea && segundaArea && primerArea != segundaArea) {
+        const filteredByAreas = filteredFechas.filter(
+          (fecha: TallerData) =>
+            fecha.Vertical === primerArea || fecha.Vertical === segundaArea
+        );
+        setFechasFiltradas(filteredByAreas);
+      }
+      
     } catch (error) {
       console.error("Error al enviar la petición:", error);
     } finally {
@@ -467,14 +473,23 @@ export function DatosRegistroTalleres() {
                   <option value="" disabled>
                     Selecciona una opción
                   </option>
-                  {areasOptions.map((option) => (
-                    <option
-                      key={option}
-                      value={option}
-                      disabled={option === primerArea}
-                    >
-                      {option}
-                    </option>
+                  {/*{areasOptions.map((option) => (*/}
+                  {/*  <option*/}
+                  {/*    key={option}*/}
+                  {/*    value={option}*/}
+                  {/*    disabled={option === primerArea}*/}
+                  {/*  >*/}
+                  {/*    {option}*/}
+                  {/*  </option>*/}
+                  {/*))}*/}
+                  {verticales.map((option) => (
+                      <option
+                          key={option}
+                          value={option}
+                          disabled={option === primerArea}
+                      >
+                        {option}
+                      </option>
                   ))}
                 </select>
               )}
@@ -505,14 +520,23 @@ export function DatosRegistroTalleres() {
                   <option value="" disabled>
                     Selecciona una opción
                   </option>
-                  {areasOptions.map((option) => (
-                    <option
-                      key={option}
-                      value={option}
-                      disabled={option === segundaArea}
-                    >
-                      {option}
-                    </option>
+                  {/*{areasOptions.map((option) => (*/}
+                  {/*  <option*/}
+                  {/*    key={option}*/}
+                  {/*    value={option}*/}
+                  {/*    disabled={option === segundaArea}*/}
+                  {/*  >*/}
+                  {/*    {option}*/}
+                  {/*  </option>*/}
+                  {/*))}*/}
+                  {verticales.map((option) => (
+                      <option
+                          key={option}
+                          value={option}
+                          disabled={option === segundaArea}
+                      >
+                        {option}
+                      </option>
                   ))}
                 </select>
               )}
