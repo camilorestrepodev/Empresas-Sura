@@ -83,8 +83,8 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
             <div className="space-y-8">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  11. ¿La empresa conoce cuáles son los mínimos legales que debe
-                  tener en cuenta para contratar al empleado?{" "}
+                  11. ¿La empresa conoce cuales son los mínimos legales
+                  para contratar a un empleado?{" "}
                   <span className="italic font-normal">
                     (Como validación de conocimientos obligatorios, exámenes
                     médicos de preempleo y perfil de cargo.)
@@ -101,7 +101,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta11",
                           "1",
-                          "La empresa no tiene definidos lineamientos internos o legales para la selección"
+                          "No los tiene definidos."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -114,8 +114,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa no tiene definidos lineamientos internos o
-                        políticas para la selección
+                        No los tiene definidos.
                       </span>
                     </label>
                   </div>
@@ -129,7 +128,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta11",
                           "2",
-                          "La empresa tiene definidos lineamientos internos o legales para la selección que contemplan los mínimos legales, pero no están documentados ni divulgados."
+                          "Los tiene, pero no están documentados ni divulgados."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -142,9 +141,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa tiene políticas o lineamientos para la
-                        selección que contemplan los mínimos legales, pero no
-                        están documentados ni divulgados.
+                        Los tiene, pero no están documentados ni divulgados.
                       </span>
                     </label>
                   </div>
@@ -158,7 +155,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta11",
                           "3",
-                          "La empresa tiene definidos lineamientos internos o legales para la selección que contemplan los mínimos legales, están documentados y divulgados."
+                          "Los tiene y están documentados y divulgados."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -171,9 +168,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa tiene políticas o lineamientos para la
-                        selección que contemplan los mínimos legales, están
-                        documentados y divulgados.
+                        Los tiene y están documentados y divulgados.
                       </span>
                     </label>
                   </div>
@@ -182,7 +177,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  12. ¿Cuenta con documentación que soporte la implementación
+                  12. ¿Cuenta con documentación que respalde la implementación
                   del sistema de gestión en seguridad y salud en el trabajo?{" "}
                   <span className="italic font-normal">
                     (Evaluación o autoevaluación al sistema de gestión en
@@ -200,7 +195,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta12",
                           "1",
-                          "La empresa no ha identificado los requisitos mínimos que le aplican, ni participa con aliados que lo apoyan en este proceso."
+                          "No ha identificado los requisitos mínimos que le aplican, ni participa con aliados que lo apoyan en este proceso."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -213,9 +208,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa no ha identificado los requisitos mínimos que
-                        le aplican, ni participa con aliados que lo apoyan en
-                        este proceso.
+                        No ha identificado los requisitos mínimos que le aplican, ni participa con aliados que lo apoyan en este proceso.
                       </span>
                     </label>
                   </div>
@@ -229,7 +222,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta12",
                           "2",
-                          "La empresa tiene identificados los estándares mínimos que le aplican según el tamaño y tipo de empresa pero aun no los ha evaluado ni implementado."
+                          "Tiene identificados los estándares mínimos que le aplican según el tamaño y tipo de empresa, pero no los ha evaluado ni implementado."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -242,9 +235,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa tiene identificados los estándares mínimos
-                        que le aplican según el tamaño y tipo de empresa pero
-                        aun no los ha evaluado ni implementado.
+                        Tiene identificados los estándares mínimos que le aplican según el tamaño y tipo de empresa, pero no los ha evaluado ni implementado.
                       </span>
                     </label>
                   </div>
@@ -258,7 +249,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta12",
                           "3",
-                          "La empresa ha implementado y evaluado los estándares mínimos con resultados de complimiento en un nivel crítico (hasta un 60%)."
+                          "Ha implementado y evaluado los estándares mínimos con un nivel de cumplimiento crítico de hasta un 60%."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -271,9 +262,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa ha implementado y evaluado los estándares
-                        mínimos con resultados de cumplimiento en un nivel
-                        crítico (hasta un 60%)
+                        Ha implementado y evaluado los estándares mínimos con un nivel de cumplimiento crítico de hasta un 60%.
                       </span>
                     </label>
                   </div>
@@ -287,7 +276,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta12",
                           "4",
-                          "La empresa ha implementado y evaluado los estándares mínimos con resultados de complimiento en un nivel moderadamente aceptable (hasta un 85%)."
+                          "Ha implementado y evaluado los estándares mínimos con un nivel de cumplimiento moderadamente aceptable (85%) y se articula con aliados para la gestión."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -300,10 +289,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa ha implementado y evaluado los estándares
-                        mínimos con resultados de cumplimiento en un nivel
-                        moderadamente aceptable (hasta un 85%) y se articula con
-                        aliados para apalancar la gestión.
+                        Ha implementado y evaluado los estándares mínimos con un nivel de cumplimiento moderadamente aceptable (85%) y se articula con aliados para la gestión.
                       </span>
                     </label>
                   </div>
@@ -317,7 +303,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta12",
                           "5",
-                          "La empresa ha implementado y evaluado los estándares mínimos con resultados de complimiento en un nivel aceptable (superior al 85%)."
+                          "Ha implementado y evaluado los estándares mínimos con un nivel de cumplimiento aceptable (más del 85%) y se articula con aliados para la gestión y el proceso de mejora continua."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -330,11 +316,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa ha implementado y evaluado los estándares
-                        mínimos con resultados de cumplimiento en un nivel
-                        aceptable (superior al 85%) y se articula con aliados
-                        para apalancar la gestión y lo incluye dentro de un
-                        proceso de mejora continua.
+                        Ha implementado y evaluado los estándares mínimos con un nivel de cumplimiento aceptable (más del 85%) y se articula con aliados para la gestión y el proceso de mejora continua.
                       </span>
                     </label>
                   </div>
@@ -343,16 +325,9 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  13. ¿Tienes claro cuál es el conocimiento, licencias o las
-                  certificaciones legales que deben tener tus empleados para
-                  poder ejercer sus funciones de acuerdo con su profesión o su
-                  rol?{" "}
+                  13. ¿Tiene claro cuál es el conocimiento, licencias o las certificaciones legales que deben tener sus empleados para ejercer sus funciones de acuerdo con su profesión o su rol?{" "}
                   <span className="italic font-normal">
-                    (Ejemplos . cursos de manipulación e alimentos para personal
-                    operativo en cocinas, Licencia de SST para tecnólogos y
-                    profesionales en seguridad y salud en el trabajo, Curso en
-                    Reanimación Cardiopulmonar para personal asistencial en
-                    áreas de urgencias.)
+                    (Ejemplos: cursos de manipulación de alimentos, Licencia de SST, Curso en Reanimación Cardiopulmonar.)
                   </span>
                 </label>
                 <div className="space-y-2">
@@ -366,7 +341,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         handleRespuestaChange(
                           "pregunta13",
                           "1",
-                          "La empresa no tiene identificados los conocimientos y certificaciones legales que le aplican a su talento humano, de acuerdo con su rol y/o procesión."
+                          "No los tiene identificados. Sus empleados no están certificados o dichas certificaciones no están vigentes."
                         )
                       }
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
@@ -379,11 +354,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa no tiene identificados los conocimientos y
-                        certificaciones legales que le aplican a su talento
-                        humano, de acuerdo con su rol y/o profesión. Sus
-                        empleados no están certificados o dichas certificaciones
-                        no están vigentes
+                        No los tiene identificados. Sus empleados no están certificados o dichas certificaciones no están vigentes.
                       </span>
                     </label>
                   </div>
@@ -393,7 +364,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                       id="pregunta13_opcion2"
                       name="pregunta13"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta13", "2", "La empresa tiene identificadas las certificaciones legales pero no las gestiona proactivamente. Susempleados no están certificados o dichas certificaciones no están vigentes.")}
+                      onChange={() => handleRespuestaChange("pregunta13", "2", "Las tienen identificadas, pero no las gestiona. Sus empleados no están certificados o no están vigentes.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -404,10 +375,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa tiene identificadas las certificaciones
-                        legales pero no las gestiona proactivamente. Sus
-                        empleados no están certificados o dichas certificaciones
-                        no están vigentes.
+                        Las tienen identificadas, pero no las gestiona. Sus empleados no están certificados o no están vigentes.
                       </span>
                     </label>
                   </div>
@@ -417,7 +385,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                       id="pregunta13_opcion3"
                       name="pregunta13"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta13", "3", "La empresa tiene identificadas las certificaciones legales de sus empleados y las gestiona de manera manual y reactiva para mantenerlas actualizadas.")}
+                      onChange={() => handleRespuestaChange("pregunta13", "3", "Las tiene identificadas y las gestiona manual y reactivamente para actualizarlas.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -428,9 +396,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa tiene identificadas las certificaciones
-                        legales de sus empleados y las gestiona de manera manual
-                        y reactiva para mantenerlas actualizadas.
+                        Las tiene identificadas y las gestiona manual y reactivamente para actualizarlas.
                       </span>
                     </label>
                   </div>
@@ -440,7 +406,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                       id="pregunta13_opcion4"
                       name="pregunta13"
                       value="4"
-                      onChange={() => handleRespuestaChange("pregunta13", "4", "La empresa cuenta con una herramienta que de manera predictiva alerta el vencimiento y cuenta con espacios y aliados que de forma permanente y periódica actualizan dichas certificaciones.")}
+                      onChange={() => handleRespuestaChange("pregunta13", "4", "Cuenta con una herramienta predictiva que alerta el vencimiento y cuenta con espacios y aliados para actualizar las certificaciones.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -451,10 +417,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa cuenta con una herramienta que de manera
-                        predictiva alerta el vencimiento y cuenta con espacios y
-                        aliados que de forma permanente y periódica actualizan
-                        dichas certificaciones.
+                        Cuenta con una herramienta predictiva que alerta el vencimiento y cuenta con espacios y aliados para actualizar las certificaciones.
                       </span>
                     </label>
                   </div>

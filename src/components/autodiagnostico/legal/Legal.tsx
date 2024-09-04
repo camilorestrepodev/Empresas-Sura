@@ -68,21 +68,14 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
             Legal
           </h2>
           <p className="mt-3  text-center text-lg sm:text-left">
-            Capacidad para desarrollar el negocio dentro de un marco legal y
-            normativo eficiente.​​​
+            Capacidad para desarrollar el negocio d entro de un marco legal y
+            normativo eficiente.
           </p>
           <form id="formSection3" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  25. ¿La empresa está formalizada?
-                  <span className="italic font-normal">
-                    (Mantiene actualizado el registro de Cámara y Comercio,
-                    cuenta con los registros obligatorios dependiendo del tipo
-                    de negocio, por ejemplo si es IPS, registro de habilitación
-                    en salud. Realiza asamblea de socios y/o accionistas
-                    mínimamente una vez al año.)
-                  </span>
+                  25. ¿Cuenta con los registros obligatorios para operar?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -91,7 +84,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta25_opcion1"
                       name="pregunta25"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta25", "1", "La empresa no está formalizada.")}
+                      onChange={() => handleRespuestaChange("pregunta25", "1", "No cuenta con los registros.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -102,7 +95,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa no está formalizada.
+                        No cuenta con los registros.
                       </span>
                     </label>
                   </div>
@@ -112,7 +105,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta25_opcion2"
                       name="pregunta25"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta25", "2", "La empresa cuenta con algunos de los requisitos para estar formalizada.")}
+                      onChange={() => handleRespuestaChange("pregunta25", "2", "Cuenta de manera parcial con los registros.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -123,8 +116,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa cuenta con algunos de los requisitos para
-                        estar formalizada.
+                        Cuenta de manera parcial con los registros.
                       </span>
                     </label>
                   </div>
@@ -134,7 +126,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta25_opcion3"
                       name="pregunta25"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta25", "3", "La empresa cuenta con todos los requisitos para estar formalizada.")}
+                      onChange={() => handleRespuestaChange("pregunta25", "3", "Sí cuenta con todos los registros necesarios.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -145,8 +137,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa cuenta con todos los requisitos para estar
-                        formalizada.
+                        Sí cuenta con todos los registros necesarios.
                       </span>
                     </label>
                   </div>
@@ -156,7 +147,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta25_opcion4"
                       name="pregunta25"
                       value="4"
-                      onChange={() => handleRespuestaChange("pregunta25", "4", "No Aplica (Es una persona natural y/o independiente)")}
+                      onChange={() => handleRespuestaChange("pregunta25", "4", "No Aplica (Es una persona natural y/o independiente).")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -167,7 +158,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        No Aplica (Es una persona natural y/o independiente)
+                        No Aplica (Es una persona natural y/o independiente).
                       </span>
                     </label>
                   </div>
@@ -176,9 +167,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  26. ¿La empresa realiza los contratos por escrito con los
-                  requisitos esenciales: objeto claro, consentimiento de las
-                  partes y motivo por el cual se celebra el mismo?
+                  26. ¿Formaliza los contratos por escrito?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -187,7 +176,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta26_opcion1"
                       name="pregunta26"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta26", "1", "Todos sus contratos los realiza de manera verbal y sin dejar claras las obligaciones y derechos de las partes.")}
+                      onChange={() => handleRespuestaChange("pregunta26", "1", "Contrata de manera verbal.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -198,8 +187,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Todos sus contratos los realiza de manera verbal y sin
-                        dejar claras las obligaciones y derechos de las partes.
+                        Contrata de manera verbal.
                       </span>
                     </label>
                   </div>
@@ -209,7 +197,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta26_opcion2"
                       name="pregunta26"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta26", "2", "La empresa realiza sus contratos unos de manera verbal y otros de manera escrita, dejando claro las obligaciones de las partes.")}
+                      onChange={() => handleRespuestaChange("pregunta26", "2", "Algunos contratos son verbales y otros escritos.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -220,9 +208,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa realiza sus contratos unos de manera verbal y
-                        otros de manera escrita, dejando claro las obligaciones
-                        de las partes.
+                        Algunos contratos son verbales y otros escritos.
                       </span>
                     </label>
                   </div>
@@ -232,7 +218,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta26_opcion3"
                       name="pregunta26"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta26", "3", "La empresa realiza sus contratos por escrito dejando claro las obligaciones de las partes.")}
+                      onChange={() => handleRespuestaChange("pregunta26", "3", "Celebro todos los contratos por escrito.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -243,8 +229,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa realiza sus contratos por escrito dejando
-                        claro las obligaciones de las partes.{" "}
+                        Celebro todos los contratos por escrito.
                       </span>
                     </label>
                   </div>
@@ -253,12 +238,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  27. ¿Conoce las condiciones de calidad y garantía legal de sus
-                  productos y/o servicios que debe ofrecer as sus clientes? Ley
-                  1480 de 2011, estatuto del consumidor 1. La empresa debe
-                  otorgar una garantía 2. Tener claro las condiciones de acceso
-                  a la garantía 3. Establecer los tiempos para efectuar la
-                  garantia 4. Establecer los canales
+                  27. ¿Cumple las normas laborales y de seguridad social?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -267,7 +247,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta27_opcion1"
                       name="pregunta27"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta27", "1", "La empresa no tiene claridad sobre las obligaciones de sus productos y/o servicios para que sean consumidos por sus clientes")}
+                      onChange={() => handleRespuestaChange("pregunta27", "1", "No conoce las normas que debe cumplir.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -278,7 +258,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      La empresa no tiene claridad sobre las condiciones de calidad y seguridad de sus productos y/o servicios para que sean consumidos por sus clientes{" "}
+                        No conoce las normas que debe cumplir.
                       </span>
                     </label>
                   </div>
@@ -289,7 +269,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta27_opcion2"
                       name="pregunta27"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta27", "2", "La empresa otorga garantía de sus productos y/o servicios pero no tiene claro si estas cumplen con las obligaciones legales")}
+                      onChange={() => handleRespuestaChange("pregunta27", "2", "Cumple parcialmente.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -300,7 +280,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      La empresa otorga garantía de sus productos y/o servicios pero no tiene claro si estas cumplen con las condiciones legales
+                      Cumple parcialmente.
                       </span>
                     </label>
                   </div>
@@ -311,7 +291,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                       id="pregunta27_opcion3"
                       name="pregunta27"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta27", "3", "La empresa conoce la obligaciones de sus productos y/o servicios y otorga a sus clientes la garantía legal")}
+                      onChange={() => handleRespuestaChange("pregunta27", "3", "Cumple a cabalidad las normas laborales y de seguridad social.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -322,7 +302,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      La empresa conoce la calidad de sus productos y/o servicios y otorga a sus clientes la garantía legal
+                      Cumple a cabalidad las normas laborales y de seguridad social.
                       </span>
                     </label>
                   </div>

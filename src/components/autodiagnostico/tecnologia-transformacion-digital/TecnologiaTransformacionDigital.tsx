@@ -81,16 +81,9 @@ export default function TecnologiaTransformacionDigital({
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  14. ¿La empresa cuenta con herramientas tecnológicas que le
-                  apalanquen la operación del negocio y el relacionamiento con
-                  sus clientes?{" "}
+                  14. ¿Cuenta con herramientas tecnológicas que apalanquen la operación del negocio?{" "}
                   <span className="italic font-normal">
-                    (CRM: Customer Relation Management, Es la herramienta que
-                    permite hacer gestion de las relaciones con los clientes ej.
-                    Salesforce. ERP: Sistema de software que permite conectar
-                    varias herramientas que operan en el negocio ej Herramienta
-                    de finanzas, TH y CRM. Manejo de base de datos de clientes -
-                    software de venta)
+                    (CRM para gestión de clientes, ERP para conectar varias herramientas que operan en el negocio, etc.)
                   </span>
                 </label>
                 <div className="space-y-2">
@@ -100,7 +93,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta14_opcion1"
                       name="pregunta14"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta14", "1", "La empresa no cuenta con las herramientas tecnológicas necesarias que requiere la operación de sus procesos internos y externos.")}
+                      onChange={() => handleRespuestaChange("pregunta14", "1", "No cuenta con herramientas tecnológicas.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -111,9 +104,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa no cuenta con las herramientas tecnológicas
-                        necesarias que requiere la operación de sus procesos
-                        internos y externos.
+                        No cuenta con herramientas tecnológicas.
                       </span>
                     </label>
                   </div>
@@ -123,7 +114,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta14_opcion2"
                       name="pregunta14"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta14", "2", "La empresa cuenta con herramientas tecnológicas para operar algunos de sus procesos, pero no tiene ningún persona encargada de soporte o mantenimiento.")}
+                      onChange={() => handleRespuestaChange("pregunta14", "2", "Cuenta con algunas herramientas tecnológicas, pero no tiene encargado de soporte o mantenimiento.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -134,9 +125,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa cuenta con herramientas tecnológicas para
-                        operar algunos de sus procesos, pero no tiene área o
-                        persona encargada de soporte o mantenimiento.
+                        Cuenta con algunas herramientas tecnológicas, pero no tiene encargado de soporte o mantenimiento.
                       </span>
                     </label>
                   </div>
@@ -146,7 +135,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta14_opcion3"
                       name="pregunta14"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta14", "3", "La empresa gestiona sus herramientas tecnológicas y cuenta con más soporte y mantenimiento de estas de manera informal.")}
+                      onChange={() => handleRespuestaChange("pregunta14", "3", "Cuenta con un encargado informal de soporte y mantenimiento de las herramientas tecnológicas.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -157,9 +146,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        La empresa gestiona sus herramientas tecnológicas y
-                        cuenta con algún soporte y mantenimiento de estas de
-                        manera informal.
+                        Cuenta con un encargado informal de soporte y mantenimiento de las herramientas tecnológicas.
                       </span>
                     </label>
                   </div>
@@ -169,7 +156,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta14_opcion4"
                       name="pregunta14"
                       value="4"
-                      onChange={() => handleRespuestaChange("pregunta14", "4", "Cuenta con contrato formal con un tercero experto y/o con un tamaño propia de la empresa responsable de la gestión de las herramientas tecnológicas.")}
+                      onChange={() => handleRespuestaChange("pregunta14", "4", "Cuenta con un encargado contratado formalmente para la gestión de las herramientas tecnológicas.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -180,9 +167,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Cuenta con contrato formal con un tercero experto y/o
-                        con un área propia de la empresa responsable de la
-                        gestión de las herramientas tecnológicas.
+                        Cuenta con un encargado contratado formalmente para la gestión de las herramientas tecnológicas.
                       </span>
                     </label>
                   </div>
@@ -193,7 +178,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta14_opcion5"
                       name="pregunta14"
                       value="4"
-                      onChange={() => handleRespuestaChange("pregunta14", "5", "No aplica")}
+                      onChange={() => handleRespuestaChange("pregunta14", "5", "No aplica.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -203,7 +188,7 @@ export default function TecnologiaTransformacionDigital({
                       <div className="radio-button">
                         <div className="radio-button-dot"></div>
                       </div>
-                      <span className="ml-2">No aplica</span>
+                      <span className="ml-2">No aplica.</span>
                     </label>
                   </div>
                 </div>
@@ -211,8 +196,7 @@ export default function TecnologiaTransformacionDigital({
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  15. Si utiliza herramientas o software NO gratuitos, ¿Cuenta
-                  las licencias formales de cada una de ellas?
+                  15. Si utiliza herramientas o software NO gratuitos, ¿cuenta con las licencias?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -221,7 +205,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta15_opcion1"
                       name="pregunta15"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta15", "1", "Ninguna aplicación y/o herramienta tecnológica se encuentra licenciada")}
+                      onChange={() => handleRespuestaChange("pregunta15", "1", "Ninguna aplicación y/o herramienta tiene licencia.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -232,8 +216,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Ninguna aplicación y/o herramienta tecnológica se
-                        encuentra licenciada
+                        Ninguna aplicación y/o herramienta tiene licencia.
                       </span>
                     </label>
                   </div>
@@ -243,7 +226,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta15_opcion2"
                       name="pregunta15"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta15", "2", "Algunas de las aplicaciones y herramientas tecnológicas con las que cuenta la empresa y que lo requieren, se encuentran licenciadas.")}
+                      onChange={() => handleRespuestaChange("pregunta15", "2", "Algunas aplicaciones y/o herramientas están licenciadas.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -254,9 +237,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Algunas de las aplicaciones y herramientas tecnológicas
-                        con las que cuenta la empresa y que lo requieren, se
-                        encuentran licenciadas.
+                        Algunas aplicaciones y/o herramientas están licenciadas.
                       </span>
                     </label>
                   </div>
@@ -266,7 +247,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta15_opcion3"
                       name="pregunta15"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta15", "3", "Todas las aplicaciones y herramientas tecnológicas con las que cuenta la empresa y que lo requieren, se encuentran licenciadas")}
+                      onChange={() => handleRespuestaChange("pregunta15", "3", "Todas las aplicaciones y herramientas se encuentran licenciadas.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -277,9 +258,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Todas las aplicaciones y herramientas tecnológicas con
-                        las que cuenta la empresa y que lo requieren, se
-                        encuentran licenciadas
+                        Todas las aplicaciones y herramientas se encuentran licenciadas.
                       </span>
                     </label>
                   </div>
@@ -289,7 +268,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta15_opcion4"
                       name="pregunta15"
                       value="4"
-                      onChange={() => handleRespuestaChange("pregunta15", "4", "Cuenta con presupuesto y plan de renovación para la adquisición/renovación de licencias y realiza control en la instalación")}
+                      onChange={() => handleRespuestaChange("pregunta15", "4", "Cuenta con presupuesto y plan de renovación para la adquisición/renovación de licencias.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -300,9 +279,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Cuenta con presupuesto y plan de renovación para la
-                        adquisición/renovación de licencias y realiza control en
-                        la instalación.
+                        Cuenta con presupuesto y plan de renovación para la adquisición/renovación de licencias.
                       </span>
                     </label>
                   </div>
@@ -312,7 +289,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta15_opcion5"
                       name="pregunta15"
                       value="5"
-                      onChange={() => handleRespuestaChange("pregunta15", "5", "No aplica porque la empresa cuenta con programas gratuitos")}
+                      onChange={() => handleRespuestaChange("pregunta15", "5", "No aplica.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -323,8 +300,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        No aplica porque la empresa cuenta con programas
-                        gratuitos
+                        No aplica.
                       </span>
                     </label>
                   </div>
@@ -333,12 +309,9 @@ export default function TecnologiaTransformacionDigital({
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  16. ¿Has implementado alguna acción preventiva o usas
-                  herramientas de ciberseguridad para "proteger tú información" en
-                  tus canales digitales ?{" "}
+                  16. ¿Usa herramientas de ciberseguridad en sus canales digitales para proteger su información?{" "}
                   <span className="italic font-normal">
-                    (antivirus - control de accesos a las aplicaciones -
-                    transferencia del riesgo - seguro)
+                    (Antivirus, control de accesos a las aplicaciones, seguros)
                   </span>
                 </label>
                 <div className="space-y-2">
@@ -348,7 +321,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta16_opcion1"
                       name="pregunta16"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta16", "1", "No tiene conocimiento de los riesgos cibernéticos a los que está expuesta la información de la empresa")}
+                      onChange={() => handleRespuestaChange("pregunta16", "1", "No conoce los riesgos cibernéticos a los que está expuesta la información de la empresa.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -359,8 +332,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        No tiene conocimiento de los riesgos cibernéticos a los
-                        que está expuesta la información de la empresa.
+                        No conoce los riesgos cibernéticos a los que está expuesta la información de la empresa.
                       </span>
                     </label>
                   </div>
@@ -370,7 +342,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta16_opcion2"
                       name="pregunta16"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta16", "2", "Conoce los riesgos cibernéticos a los que está expuesta la información crítica de su empresa, y tiene conexión de tratamiento de datos personales “Ley de Habeas Data”")}
+                      onChange={() => handleRespuestaChange("pregunta16", "2", "Conoce los riesgos cibernéticos y tiene una política de tratamiento de datos personales (Ley de Habeas Data).")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -381,9 +353,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Conoce los riesgos cibernéticos a los que está expuesta
-                        la información crítica de su empresa, y tiene política
-                        de tratamiento de datos personales “Ley de Habeas Data”
+                        Conoce los riesgos cibernéticos y tiene una política de tratamiento de datos personales (Ley de Habeas Data).
                       </span>
                     </label>
                   </div>
@@ -393,7 +363,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta16_opcion3"
                       name="pregunta16"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta16", "3", "Tiene implementadas las técnicas de seguridad de la información, el tratamiento adecuado de datos y también tiene un plan de divulgación o cultura de seguridad de la información en la empresa")}
+                      onChange={() => handleRespuestaChange("pregunta16", "3", "Tiene implementadas las políticas y procesos para la gestión segura de la información y un plan de divulgación en la empresa.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -404,10 +374,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Tiene implementadas las políticas y procesos para la
-                        gestión segura de la información, el tratamiento
-                        adecuado de datos y además tiene un plan de divulgación
-                        o cultura de seguridad de la información en la empresa.
+                        Tiene implementadas las políticas y procesos para la gestión segura de la información y un plan de divulgación en la empresa.
                       </span>
                     </label>
                   </div>
@@ -416,10 +383,9 @@ export default function TecnologiaTransformacionDigital({
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  17. ¿Su empresa tiene canales digitales como sitio web o redes
-                  sociales y los actualiza con frecuencia?{" "}
+                  17. ¿Tiene canales digitales como sitio web o redes sociales y los actualiza con frecuencia?{" "}
                   <span className="italic font-normal">
-                    (Correo, chat web, Whatsapp, redes sociales, sitio web)
+                    (Correo, chat web, WhatsApp, redes sociales, sitio web)
                   </span>
                 </label>
                 <div className="space-y-2">
@@ -429,7 +395,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta17_opcion1"
                       name="pregunta17"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta17", "1", "Cuenta con algunos canales digitales y se actualizan eventualmente")}
+                      onChange={() => handleRespuestaChange("pregunta17", "1", "Tiene algunos canales digitales y se actualizan eventualmente.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -440,8 +406,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Cuenta con algunos canales digitales y se actualizan
-                        eventualmente
+                        Tiene algunos canales digitales y se actualizan eventualmente.
                       </span>
                     </label>
                   </div>
@@ -451,7 +416,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta17_opcion2"
                       name="pregunta17"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta17", "2", "Tenemos un proceso y plan de medios para gestionar y hacer seguimiento a los canales digitales")}
+                      onChange={() => handleRespuestaChange("pregunta17", "2", "Tiene un proceso y plan de medios para gestionar y hacer seguimiento a los canales digitales.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -462,8 +427,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        Tenemos un proceso y plan de medios para gestionar y
-                        hacer seguimiento a los canales digitales
+                        Tiene un proceso y plan de medios para gestionar y hacer seguimiento a los canales digitales.
                       </span>
                     </label>
                   </div>
@@ -473,7 +437,7 @@ export default function TecnologiaTransformacionDigital({
                       id="pregunta17_opcion3"
                       name="pregunta17"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta17", "3", "No aplica - La empresa no cuenta con canales digitales")}
+                      onChange={() => handleRespuestaChange("pregunta17", "3", "No aplica.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -484,7 +448,7 @@ export default function TecnologiaTransformacionDigital({
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                        No aplica - La empresa no cuenta con canales digitales
+                        No aplica.
                       </span>
                     </label>
                   </div>

@@ -69,13 +69,13 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
             Mercado
           </h2>
           <p className="mt-3  text-center text-lg sm:text-left">
-          Capacidad de leer el entorno, entender los consumidores y desarrollar nuevos segmentos de mercado a partir de propuestas de valor. 
+          Capacidad de leer el entorno, entender los consumidores y desarrollar nuevos segmentos de mercado partir de propuestas de valor. 
           </p>
           <form id="formSection5" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  18. ¿Tu empresa tiene definida una meta que quiere alcanzar este año o los próximos dos años? <span className="italic font-normal"> - Una meta cuantificable, medible y real.  </span>
+                  18. ¿Tiene definida una meta que quiere alcanzar este año o los próximos dos años? <span className="italic font-normal"> - Una meta cuantificable, medible y real.  </span>
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -84,7 +84,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta18_opcion1"
                       name="pregunta18"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta18", "1", "La empresa no cuenta con una meta clara y aún no ha definido su propósito empresarial")}
+                      onChange={() => handleRespuestaChange("pregunta18", "1", "No cuenta con una meta clara y aún no ha definido su propósito empresarial.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -95,7 +95,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      La empresa no cuenta con una meta clara y aún no ha definido su propósito empresarial 
+                      No cuenta con una meta clara y aún no ha definido su propósito empresarial. 
                       </span>
                     </label>
                   </div>
@@ -106,7 +106,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta18_opcion2"
                       name="pregunta18"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta18", "2", "Tiene definido un propósito (misión), visión y valores de la empresa. ")}
+                      onChange={() => handleRespuestaChange("pregunta18", "2", "Tiene definido un propósito (misión), visión y valores de la compañía.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -128,7 +128,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta18_opcion3"
                       name="pregunta18"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta18", "3", "A partir del análisis del entorno, define una meta, los objetivos y las estrategias")}
+                      onChange={() => handleRespuestaChange("pregunta18", "3", "A partir del análisis del entorno, define una meta, objetivos y estrategias.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -139,7 +139,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      A partir del análisis del entorno, define una meta, los objetivos y las estrategias  
+                      A partir del análisis del entorno, define una meta, objetivos y estrategias.  
                       </span>
                     </label>
                   </div>
@@ -147,7 +147,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
               </div>
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  19. ¿Cuentas con una propuesta de valor clara? Es decir, ¿qué haces diferente por lo que te compran los clientes?
+                  19. ¿Cuenta con una propuesta de valor clara? ¿Qué hace diferente para que los clientes lo elijan y no a la competencia?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -156,7 +156,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta19_opcion1"
                       name="pregunta19"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta19", "1", "No cuenta con una propuesta de valor pero tiene una oferta básica y clara de productos y servicios para sus clientes")}
+                      onChange={() => handleRespuestaChange("pregunta19", "1", "No, ofrece una gama básica de productos o servicios.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -167,7 +167,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      No cuenta con una propuesta de valor pero tiene una oferta básica y clara de productos y servicios para sus clientes
+                      No, ofrece una gama básica de productos o servicios.
                       </span>
                     </label>
                   </div>
@@ -177,7 +177,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta19_opcion2"
                       name="pregunta19"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta19", "2", "Sí, tiene definido cuál es el valor (beneficios) que ofrece a sus clientes y los atributos que lo diferencian de sus competidores en el mercado (Propuesta de valor).")}
+                      onChange={() => handleRespuestaChange("pregunta19", "2", "Tiene definida la propuesta de valor y un modelo operativo.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -188,7 +188,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Sí, tiene definido cuál es el valor (beneficios) que ofrece a sus clientes y los atributos que lo diferencian de sus competidores en el mercado (Propuesta de valor).
+                      Tiene definida la propuesta de valor y un modelo operativo.
                       </span>
                     </label>
                   </div>
@@ -198,7 +198,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta19_opcion3"
                       name="pregunta19"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta19", "3", "Alinea sus actividades y procesos con su propuesta de valor definiendo un modelo de gobierno claro, flexible y sostenible que comunica a sus grupos de interés. ")}
+                      onChange={() => handleRespuestaChange("pregunta19", "3", "Alinea procesos con una propuesta de valor y comunica un modelo de negocio claro y sostenible.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -209,7 +209,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Alinea sus actividades y procesos con su propuesta de valor definiendo un modelo de negocio claro, flexible y sostenible que comunica a sus grupos de interés. 
+                      Alinea procesos con una propuesta de valor y comunica un modelo de negocio claro y sostenible.
                       </span>
                     </label>
                   </div>
@@ -217,7 +217,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
               </div>
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  20. ¿Mides la satisfacción de tus clientes?
+                  20. ¿Mide la satisfacción de sus clientes?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -226,7 +226,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta20_opcion1"
                       name="pregunta20"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta20", "1", "La empresa no realiza medición de la satisfacción de clientes")}
+                      onChange={() => handleRespuestaChange("pregunta20", "1", "No realiza medición de la satisfacción de clientes.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -237,7 +237,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      La empresa no realiza medición de la satisfacción de clientes.
+                      No realiza medición de la satisfacción de clientes.
                       </span>
                     </label>
                   </div>
@@ -247,7 +247,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta20_opcion2"
                       name="pregunta20"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta20", "2", "Se ha realizado la medición de satisfacción y experiencia de los clientes durante las diferentes interacciones")}
+                      onChange={() => handleRespuestaChange("pregunta20", "2", "Se ha realizado la medición de satisfacción y experiencia de los clientes durante las diferentes interacciones.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -268,7 +268,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta20_opcion3"
                       name="pregunta20"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta20", "3", "Cuenta con indicadores para evaluar la satisfacción y la experiencia del cliente y responder de manera inmediata ante el cliente")}
+                      onChange={() => handleRespuestaChange("pregunta20", "3", "Cuenta con indicadores para evaluar la satisfacción y la experiencia del cliente y responder de manera inmediata ante el cliente.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -279,7 +279,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Cuenta con indicadores para evaluar la satisfacción y la experiencia del cliente y responder de manera inmediata ante el cliente. 
+                      Cuenta con indicadores para evaluar la satisfacción y la experiencia del cliente y responder de manera inmediata ante el cliente.
                       </span>
                     </label>
                   </div>
@@ -289,7 +289,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta20_opcion4"
                       name="pregunta20"
                       value="4"
-                      onChange={() => handleRespuestaChange("pregunta20", "4", "Se hace un seguimiento regular de la satisfacción y experiencia del cliente para determinar estrategias y ajustes en procesos e infraestructura que permitan proveer una mejor experiencia al cliente.")}
+                      onChange={() => handleRespuestaChange("pregunta20", "4", "Se hace un seguimiento regular de la satisfacción y experiencia del cliente.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -300,7 +300,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Se hace un seguimiento regular de la satisfacción y experiencia del cliente para determinar estrategias y ajustes en procesos e infraestructura que permitan proveer una mejor experiencia al cliente.
+                      Se hace un seguimiento regular de la satisfacción y experiencia del cliente.
                       </span>
                     </label>
                   </div>
@@ -308,7 +308,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
               </div>
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  21. ¿Cuentas con una identidad de marca?
+                  21. ¿Cuenta con una identidad de marca?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -317,7 +317,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta21_opcion1"
                       name="pregunta21"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta21", "1","La empresa no tiene una marca definida, más no cuenta con una línea gráfica de identidad.")}
+                      onChange={() => handleRespuestaChange("pregunta21", "1","No tiene una marca definida ni con una línea gráfica de identidad.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -328,7 +328,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      La empresa no tiene una marca definida, aún no cuenta con una línea gráfica de identidad. 
+                      No tiene una marca definida ni con una línea gráfica de identidad. 
                       </span>
                     </label>
                   </div>
@@ -338,7 +338,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta21_opcion2"
                       name="pregunta21"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta21", "2", "La empresa cuenta con definiciones de elementos básicos de marca; nombre, logotipo, tipografía, color.")}
+                      onChange={() => handleRespuestaChange("pregunta21", "2", "Sí cuenta con definiciones de elementos básicos de marca: nombre, logotipo, tipografía, color.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -349,7 +349,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      La empresa cuenta con definiciones de elementos básicos de marca; nombre, logotipo, tipografía, color.
+                      Sí, cuenta con definiciones de elementos básicos de marca: nombre, logotipo, tipografía, color.
                       </span>
                     </label>
                   </div>
@@ -359,7 +359,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                       id="pregunta21_opcion3"
                       name="pregunta21"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta21", "3", "La empresa cuenta con un manual de marca, que incluye elementos básicos, estilo y tono de comunicación, definiciones de propósito, valores y atributos de marca, y definiciones claras de uso para íconos, fotografías, ilustraciones, fondos, texturas.")}
+                      onChange={() => handleRespuestaChange("pregunta21", "3", "Sí, cuenta con un manual de marca.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -370,7 +370,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      La empresa cuenta con un manual de marca, que incluye elementos básicos, estilo y tono de comunicación, definiciones de propósito, valores y atributos de marca, y definiciones claras de uso para íconos, fotografías, ilustraciones, fondos, texturas.                      </span>
+                      Sí, cuenta con un manual de marca.</span>
                     </label>
                   </div>
                 </div>

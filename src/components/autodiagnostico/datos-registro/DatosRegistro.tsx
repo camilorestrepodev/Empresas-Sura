@@ -323,7 +323,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="mt-3 flex flex-col">
               <label htmlFor="sectorEconomico" className="font-semibold">
-                7. Sector económico de la empresa:
+                7. Actividad económica de la empresa:
               </label>
               <select
                 id="sectorEconomico"
@@ -332,7 +332,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                 {...register("sectorEconomico", {
                   validate: (value) =>
                     value !== "" ||
-                    "El sector economico de la empresa es requerido",
+                    "La actividad económica de la empresa es requerida",
                 })}
               >
                 <option value="" disabled>

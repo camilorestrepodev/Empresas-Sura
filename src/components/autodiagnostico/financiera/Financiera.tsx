@@ -74,7 +74,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  22. ¿Los ingresos mensuales de su empresa o negocio alcanzan a cubrir todos los gastos?  
+                  22. ¿Los ingresos de su empresa alcanzan a cubrir todos los gastos?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -83,7 +83,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                       id="pregunta22_opcion1"
                       name="pregunta22"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta22", "1", "Algunos meses los ingresos no son suficientes para pagar todos los gastos (obligaciones con proveedores, empleados, entidades financieras o el estado)")}
+                      onChange={() => handleRespuestaChange("pregunta22", "1", "Algunos meses los ingresos no son suficientes para pagar todos los gastos.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -94,7 +94,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Algunos meses los ingresos no son suficientes para pagar todos los gastos (obligaciones con proveedores, empleados, entidades financieras o el estado)
+                      Algunos meses los ingresos no son suficientes para pagar todos los gastos.
                       </span>
                     </label>
                   </div>
@@ -104,7 +104,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                       id="pregunta22_opcion2"
                       name="pregunta22"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta22", "2", "Siempre logro cubrir los gastos aunque a veces no queden ganancia")}
+                      onChange={() => handleRespuestaChange("pregunta22", "2", "Siempre logro cubrir los gastos, aunque a veces no queden ganancias.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -115,7 +115,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">                
-                      Siempre logro cubrir los gastos aunque a veces no queden ganancias
+                      Siempre logro cubrir los gastos, aunque a veces no queden ganancias.
                       </span>
                     </label>
                   </div>
@@ -125,7 +125,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                       id="pregunta22_opcion3"
                       name="pregunta22"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta22", "3", "En los mesesuenos guardo para cubrir los gastos de los no tanuenos")}
+                      onChange={() => handleRespuestaChange("pregunta22", "3", "En los meses buenos guardo para cubrir los gastos de los no tan buenos.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -136,7 +136,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">                      
-                      En los meses buenos guardo para cubrir los gastos de los no tan buenos 
+                      En los meses buenos guardo para cubrir los gastos de los no tan buenos.
                       </span>
                     </label>
                   </div>
@@ -145,7 +145,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  23. ¿Construye Estados Financieros o registra cifras de los resultados de la empresa?
+                  23. ¿Construye y analiza los estados financieros de la empresa?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -175,7 +175,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                       id="pregunta23_opcion2"
                       name="pregunta23"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta23", "2", "Recolecta información financiera básica (Ventas, costos, deudas, etc.) Sin embargo no estructura contablemente la información")}
+                      onChange={() => handleRespuestaChange("pregunta23", "2", "Recolecta información financiera básica (ventas, costos, deudas, etc.).")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -186,7 +186,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Recolecta información financiera básica (Ventas, costos, deudas, etc.) Sin embargo no estructura contablemente la información
+                      Recolecta información financiera básica (ventas, costos, deudas, etc.).
                       </span>
                     </label>
                   </div>
@@ -196,7 +196,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                       id="pregunta23_opcion3"
                       name="pregunta23"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta23", "3", "Construye información estructurada contablemente (Balance General-Estado de Pérdidas y Ganancia y Flujo de Caja) con periodicidad anual o mensual")}
+                      onChange={() => handleRespuestaChange("pregunta23", "3", "Construye información estructurada contablemente con periodicidad anual o mensual.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -207,7 +207,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Construye información estructurada contablemente (Balance General-Estado de Pérdidas y Ganancias y Flujo de Caja) con periodicidad anual o mensual
+                      Construye información estructurada contablemente con periodicidad anual o mensual.
                       </span>
                     </label>
                   </div>
@@ -216,7 +216,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  24. ¿Conoce los beneficios tributarios a los cuales puede acceder como empresa y ha hecho uso de estos?
+                  24. ¿Conoce los beneficios tributarios a los que puede acceder y ha hecho uso de estos?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -225,7 +225,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                       id="pregunta24_opcion1"
                       name="pregunta24"
                       value="1"
-                      onChange={() => handleRespuestaChange("pregunta24", "1", "Desconoce los incentivos tributarios a los inversionistas puede acceder.")}
+                      onChange={() => handleRespuestaChange("pregunta24", "1", "Desconoce los incentivos tributarios.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -236,7 +236,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Desconoce los incentivos tributarios a los cuales puede acceder.
+                      Desconoce los incentivos tributarios.
                       </span>
                     </label>
                   </div>
@@ -246,7 +246,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                       id="pregunta24_opcion2"
                       name="pregunta24"
                       value="2"
-                      onChange={() => handleRespuestaChange("pregunta24", "2", "Ha identificado que su empresa puede aplicar a beneficios tributarios")}
+                      onChange={() => handleRespuestaChange("pregunta24", "2", "Ha identificado que puede aplicar a un beneficio tributario.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -257,7 +257,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Ha identificado que su empresa puede aplicar a beneficios tributarios
+                      Ha identificado que puede aplicar a un beneficio tributario.
                       </span>
                     </label>
                   </div>
@@ -267,7 +267,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                       id="pregunta24_opcion3"
                       name="pregunta24"
                       value="3"
-                      onChange={() => handleRespuestaChange("pregunta24", "3", "Ha accedido a algunos beneficios y sabe que puede tener plan de acción para beneficios adicionales")}
+                      onChange={() => handleRespuestaChange("pregunta24", "3", "Ha accedido a algunos beneficios e identifica potenciales.")}
                       className="form-radio h-4 w-4 text-blue-600 visually-hidden"
                     />
                     <label
@@ -278,7 +278,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
                         <div className="radio-button-dot"></div>
                       </div>
                       <span className="ml-2">
-                      Ha accedido a algunos beneficios y sabe que puede tener plan de acción para beneficios adicionales
+                      Ha accedido a algunos beneficios e identifica potenciales.
                       </span>
                     </label>
                   </div>
