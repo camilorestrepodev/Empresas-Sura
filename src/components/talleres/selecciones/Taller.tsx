@@ -78,7 +78,7 @@ export function Taller({ responseFecha }: TallerProps) {
                         value={taller.Taller}
                         className="text-gray-500 text-sm md:text-base lg:text-lg truncate"
                       >
-                        {taller.Taller}, {new Date(taller.Fecha).toLocaleDateString()}, {taller.Hora.toUpperCase()}
+                        {new Date(taller.Fecha).toLocaleDateString()} {taller.Hora.toUpperCase()} - {taller.Taller}
                       </option>
                     ))}
                   </select>
@@ -109,7 +109,7 @@ export function Taller({ responseFecha }: TallerProps) {
                           value={taller.Taller}
                           className="text-gray-500 text-sm md:text-base lg:text-lg truncate lg:w-[500px]"
                         >
-                          {taller.Taller}, {new Date(taller.Fecha).toLocaleDateString()}, {taller.Hora.toUpperCase()}
+                          {new Date(taller.Fecha).toLocaleDateString()} {taller.Hora.toUpperCase()} - {taller.Taller}
                         </option>
                       ))}
                   </select>
