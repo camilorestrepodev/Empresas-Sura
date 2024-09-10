@@ -15,8 +15,9 @@ export default function Resultados({
   enviarGuardarInfo,
 }: any) {
   const loading = Constants.LOADING_GIF;
-    
+
   const [rutasEnviadas, setRutasEnviadas] = useState(false);
+  const [informacionGuardada, setInformacionGuardada] = useState(false);
   const navigate = useNavigate();
   const getColorClass = (
     resultado: string
@@ -79,11 +80,22 @@ export default function Resultados({
     return rutasMenores;
   };
 
+  const handleEnviarGuardarInfo = useCallback(
+    () => {
+      if (!informacionGuardada) {
+        setInformacionGuardada(true);
+        enviarGuardarInfo();
+      }
+    },
+    [enviarGuardarInfo, informacionGuardada]
+  );
+
   const handleEnviarRutasMenores = useCallback(
     (rutas: any[]) => {
       enviarRutasMenores(rutas);
+      handleEnviarGuardarInfo();
     },
-    [enviarRutasMenores]
+    [enviarRutasMenores, handleEnviarGuardarInfo]
   );
 
   useEffect(() => {
@@ -94,7 +106,6 @@ export default function Resultados({
       setRutasEnviadas(true); 
     }
   }, [response, rutasEnviadas, handleEnviarRutasMenores]);
-
 
   useEffect(() => {
     if (response && response.respuestasFormulario && !hasSentEmail.current) {
@@ -132,7 +143,6 @@ export default function Resultados({
   );
 
   const onClick = () => {
-    enviarGuardarInfo();
     navigate("/talleres/datos-registro-talleres");
   };
 
