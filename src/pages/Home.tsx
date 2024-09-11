@@ -37,6 +37,7 @@ export default function Home() {
   const [descripciones, setDescripciones] = useState({});
   const [rutasMenores, setRutasMenores] = useState({});
   const [id, setId] = useState<string | null>(null);
+  const [informacionGuardada, setInformacionGuardada] = useState(false);
 
   const location = useLocation();
   const [loading, setLoading] = useState(true);
@@ -54,6 +55,14 @@ export default function Home() {
     return params;
   };
 
+  const arrayToObject = (arr: string[]): Record<string, string> => {
+    const result: Record<string, string> = {};
+    arr.forEach((item, index) => {
+      result[index.toString()] = item;
+    });
+    return result;
+  };
+  
   useEffect(() => {
     const handleHashChange = async () => {
       const hash = window.location.hash.substring(1);
@@ -126,13 +135,17 @@ export default function Home() {
     }));
   };
 
-  const handleSaveInfo = async () => {
+  const handleSaveInfo = async (rutas: any[]) => {
     try {
+      if (informacionGuardada) return;
+
+      setInformacionGuardada(true);
+      
       const response = await guardarInfo(
         id,
         dataRegister,
         descripciones,
-        rutasMenores
+        arrayToObject(rutas)
       );
       console.log(response);
     } catch (error) {

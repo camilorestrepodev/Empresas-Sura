@@ -9,7 +9,7 @@ const guardarInfo = async (id:any, dataRegister: any, descripciones: any, rutasM
         descripciones,
         dataRegister,
         rutasMenores
-    }
+    };
 
     const response = await fetch(URL, {
       method: "POST",

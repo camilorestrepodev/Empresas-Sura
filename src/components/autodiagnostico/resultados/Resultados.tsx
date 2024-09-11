@@ -81,10 +81,10 @@ export default function Resultados({
   };
 
   const handleEnviarGuardarInfo = useCallback(
-    () => {
+    (rutas: any[]) => {
       if (!informacionGuardada) {
         setInformacionGuardada(true);
-        enviarGuardarInfo();
+        enviarGuardarInfo(rutas);
       }
     },
     [enviarGuardarInfo, informacionGuardada]
@@ -93,7 +93,7 @@ export default function Resultados({
   const handleEnviarRutasMenores = useCallback(
     (rutas: any[]) => {
       enviarRutasMenores(rutas);
-      handleEnviarGuardarInfo();
+      handleEnviarGuardarInfo(rutas);
     },
     [enviarRutasMenores, handleEnviarGuardarInfo]
   );

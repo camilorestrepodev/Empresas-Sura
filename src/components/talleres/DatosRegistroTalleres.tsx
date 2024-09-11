@@ -112,8 +112,12 @@ export function DatosRegistroTalleres() {
       }
       
       const areas = JSON.parse(response.Areas);
-
-      // setAreasOptions(areas);
+      
+      if (!areas[0] || !areas[1]) {
+        setUserDataLoaded(false);
+        return;
+      }
+      
       setPrimerArea(areas[0]);
       setSegundaArea(areas[1]);
       setValue("primerArea", areas[0]);
