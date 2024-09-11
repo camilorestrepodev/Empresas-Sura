@@ -147,6 +147,7 @@ export default function Home() {
         descripciones,
         arrayToObject(rutas)
       );
+      console.log(rutasMenores);
       console.log(response);
     } catch (error) {
       console.error("Hubo un problema en la petición:", error);
