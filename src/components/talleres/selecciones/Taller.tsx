@@ -1,4 +1,5 @@
 import {Constants} from "../../../Constants.ts";
+import {createTallerId} from "../../../helpers/TallerId.ts";
 
 interface TallerProps {
   responseFecha: Array<{
@@ -10,9 +11,10 @@ interface TallerProps {
     Fecha: string;
     Hora: string;
   }>;
+  onTallerSeleccionado: (selectedTalleres: any) => void;
 }
 
-export function Taller({ responseFecha }: TallerProps) {
+export function Taller({ responseFecha, onTallerSeleccionado }: TallerProps) {
   const verticales = [
     ...new Set(responseFecha.map((taller) => taller.Vertical)),
   ];
@@ -29,6 +31,14 @@ export function Taller({ responseFecha }: TallerProps) {
       path: Constants.IMAGES_VERTICALES.TTD,
     },
   ];
+
+  const handleSelectionChange = (event: React.ChangeEvent<HTMLSelectElement>, vertical: string, key: string) => {
+    const newValue = event.target.value;
+    onTallerSeleccionado((prevSelections: any) => ({
+      ...prevSelections,
+      [`${vertical}-${key}`]: newValue
+    }));
+  };
 
   return (
     <>
@@ -70,12 +80,13 @@ export function Taller({ responseFecha }: TallerProps) {
                     id={`taller1-${vertical}`}
                     defaultValue={"seleccionar"}
                     className="text-[16px] text-gray-500 rounded-lg h-12 border border-gray-300 mt-1 px-3 w-full max-w-md md:w-[350px] lg:w-[auto]"
+                    onChange={(e) => handleSelectionChange(e, vertical, 'primerTaller')}
                   >
                     <option value="seleccionar">Selecciona una opción</option>
                     {talleresVertical.slice(0, 2).map((taller, index) => (
                       <option
                         key={index}
-                        value={taller.Taller}
+                        value={createTallerId(taller)}
                         className="text-gray-500 text-sm md:text-base lg:text-lg truncate"
                       >
                         {new Date(taller.Fecha).toLocaleDateString()} {taller.Hora.toUpperCase()} - {taller.Taller}
@@ -95,6 +106,7 @@ export function Taller({ responseFecha }: TallerProps) {
                     id={`taller2-${vertical}`}
                     defaultValue={"seleccionar"}
                     className="text-[16px] text-gray-500 rounded-lg h-12 border border-gray-300 mt-1 px-3 w-full max-w-md md:w-[350px] lg:w-[auto]"
+                    onChange={(e) => handleSelectionChange(e, vertical, 'primerTaller')}
                   >
                     <option value="seleccionar">Selecciona una opción</option>
                     {talleresVertical
@@ -106,7 +118,7 @@ export function Taller({ responseFecha }: TallerProps) {
                       .map((taller, index) => (
                         <option
                           key={index}
-                          value={taller.Taller}
+                          value={createTallerId(taller)}
                           className="text-gray-500 text-sm md:text-base lg:text-lg truncate lg:w-[500px]"
                         >
                           {new Date(taller.Fecha).toLocaleDateString()} {taller.Hora.toUpperCase()} - {taller.Taller}

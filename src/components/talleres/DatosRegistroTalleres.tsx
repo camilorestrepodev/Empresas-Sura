@@ -1,14 +1,16 @@
-import React, { ReactNode, useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import React, {ReactNode, useEffect, useState} from "react";
+import {Controller, useForm} from "react-hook-form";
 import GetDataId from "../../libs/GetDataId";
-import { Taller } from "./selecciones/Taller";
+import {Taller} from "./selecciones/Taller";
 import "../../styles/SelectStyle.css";
 import FechaFetch from "../../libs/FechaFetch";
-import { enviarRespuestasTalleres } from "../../libs/RegistroTalleresService";
-import { useNavigate } from "react-router-dom";
-import enviarCorreosTalleres from "../../libs/AutomatizacionTalleres";
+import {useNavigate} from "react-router-dom";
 import {Verticales} from "../../models/NombresVerticales.ts";
 import {Constants} from "../../Constants.ts";
+import {TallerData} from "./TallerData.tsx";
+import {createTallerId} from "../../helpers/TallerId.ts";
+import {enviarRespuestasTalleres} from "../../libs/RegistroTalleresService.ts";
+import enviarCorreosTalleres from "../../libs/AutomatizacionTalleres.ts";
 
 interface UserData {
   Nombre: string;
@@ -16,16 +18,6 @@ interface UserData {
   CorreoElectronico: string;
   Celular: string;
   Cargo: string;
-}
-
-interface TallerData {
-  Mes: string;
-  Vertical: string;
-  Iniciales: string;
-  Taller: string;
-  Experto: string;
-  Fecha: string;
-  Hora: string;
 }
 
 interface Fecha {
@@ -54,6 +46,7 @@ export function DatosRegistroTalleres() {
   const [userDataLoaded, setUserDataLoaded] = useState(true);
   const navigate = useNavigate();
   const verticales = Verticales;
+  const [seleccionesTalleres, setSeleccionesTalleres] = useState({});
 
   const loadingGif = Constants.LOADING_GIF;
 
@@ -161,14 +154,20 @@ export function DatosRegistroTalleres() {
       nombreEmpresa,
     } = data;
 
-    const selectedFechas = fechasFiltradas.map((fecha) => ({
+    const talleresSeleccionados = Object.values(seleccionesTalleres);
+    
+    const talleresFiltrados = fechasFiltradas.filter((taller) => {
+      return talleresSeleccionados.includes(createTallerId(taller));
+    });
+    
+    const selectedFechas = talleresFiltrados.map((fecha) => ({
       Taller: fecha.Taller,
       Fecha: fecha.Fecha,
       Hora: fecha.Hora.toUpperCase(),
     }));
 
     const selectedFechasCorreos: { [key: string]: string } | null =
-      fechasFiltradas.reduce(
+      talleresFiltrados.reduce(
         (acc: { [key: string]: string }, fecha: Fecha, index) => {
           const tallerKey = `taller${index + 1}`;
           acc[tallerKey] = fecha.Taller;
@@ -178,7 +177,7 @@ export function DatosRegistroTalleres() {
         },
         {}
       );
-
+    
     const requestBody = {
       numeroDocumento,
       nombreCompleto,
@@ -560,7 +559,7 @@ export function DatosRegistroTalleres() {
                 <div>
                   <h3>Selección talleres:</h3>
                   <div className="mt-5">
-                    <Taller responseFecha={fechasFiltradas} />
+                    <Taller responseFecha={fechasFiltradas} onTallerSeleccionado={setSeleccionesTalleres} />
                   </div>
                   <div className="flex justify-center py-[50px]">
                     <button
