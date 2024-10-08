@@ -2,7 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import "../../../styles/RadioButton.css";
 import { AmbientalProps } from "./Ambiental.types";
 import { useNavigate } from "react-router";
-import { NavLink } from "react-router-dom";
+import {useLocation} from "react-router-dom";
+import {Rutas} from "../../../helpers/Rutas.ts";
+import {sendToGTM} from "../../../helpers/sendToGTM.ts";
+import {GTMEvents} from "../../../helpers/GTMEvents.ts";
 
 export default function Ambiental({
   respuestasSeleccionadas,
@@ -55,7 +58,7 @@ export default function Ambiental({
     }
 
     enviarRequest();
-    navigate("/home/resultados-autodiagnostico");
+    navigate(Rutas.RESULTADOS, { state: { from: Rutas.AMBIENTAL } });
   };
 
   const section9Ref = useRef<HTMLDivElement>(null);
@@ -77,6 +80,21 @@ export default function Ambiental({
       respuestasSeleccionadas(respuestas);
     }
   }, [respuestas]);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.from === Rutas.MODELO_OPERATIVO) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.MODELO_OPERATIVO_SIGUIENTE
+      });
+    }
+  }, [location]);
+
+  const handleBack = () => {
+    navigate(Rutas.MODELO_OPERATIVO, { state: { from: Rutas.AMBIENTAL } });
+  };
 
   return (
     <>
@@ -460,14 +478,13 @@ export default function Ambiental({
           </form>
           <div className="mt-10 flex justify-around items-center">
             <div className="buttons flex justify-center gap-10">
-              <NavLink to={"/home/modelo-operativo"}>
-                <button
-                  id="atrasBtn"
-                  className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
-                >
-                  Atrás
-                </button>
-              </NavLink>
+              <button
+                id="atrasBtn"
+                className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
+                onClick={handleBack}
+              >
+                Atrás
+              </button>
 
               <button
                 type="submit"

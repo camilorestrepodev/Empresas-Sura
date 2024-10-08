@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 import "../../../styles/RadioButton.css";
 import { useNavigate } from "react-router";
-import { NavLink } from "react-router-dom";
+import {useLocation} from "react-router-dom";
+import {Rutas} from "../../../helpers/Rutas.ts";
+import {sendToGTM} from "../../../helpers/sendToGTM.ts";
+import {GTMEvents} from "../../../helpers/GTMEvents.ts";
 
 export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescripciones }: any) {
   const navigate = useNavigate();
@@ -45,10 +48,46 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
       respuestasDescripciones(descripciones);
       respuestasSeleccionadas(respuestas);
       
-      navigate("/home/tecnologia-transformacion-digital");
+      navigate(Rutas.TECNOLOGIA_TRANSFORMACION_DIGITAL, { state: { from: Rutas.TALENTO_HUMANO } });
     } else {
       setMostrarError(true);
     }
+  };
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.from === Rutas.DATOS_REGISTRO && location.state?.data) {
+
+      const {
+        tipoDocumento,
+        nombreCompleto,
+        correoElectronico,
+        numeroDocumento,
+        celular,
+        departamentoEmpresa,
+      } = location.state.data;
+      
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.DATOS_REGISTRO_SIGUIENTE,
+        'user_name': nombreCompleto,
+        'user_type_ID': tipoDocumento,
+        'user_ID': numeroDocumento,
+        'user_mail': correoElectronico,
+        'user_phone:': celular,
+        'user_departament:': departamentoEmpresa,
+      });
+    } else if (location.state?.from === Rutas.TECNOLOGIA_TRANSFORMACION_DIGITAL) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.TECNOLOGIA_TRANSFORMACION_DIGITAL_ATRAS
+      });
+    }
+  }, [location]);
+
+  const handleBack = () => {
+    navigate(Rutas.DATOS_REGISTRO, { state: { from: Rutas.TALENTO_HUMANO } });
   };
 
   const section3Ref = useRef<HTMLDivElement>(null);
@@ -426,14 +465,13 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
 
               <div className="mt-10 flex justify-around items-center">
                 <div className="flex justify-between gap-10">
-                  <NavLink to={"/home/datos-registro"}>
-                    <button
-                      id="atrasBtn"
-                      className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
-                    >
-                      Atrás
-                    </button>
-                  </NavLink>
+                  <button
+                    id="atrasBtn"
+                    className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
+                    onClick={handleBack}
+                  >
+                    Atrás
+                  </button>
 
                   <button
                     type="submit"

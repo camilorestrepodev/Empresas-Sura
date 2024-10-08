@@ -4,8 +4,11 @@ import { Departamentos, Sectores } from "./page.data";
 import { DatosRegistroProps, FormData } from "./page.types";
 import "../../../styles/SelectStyle.css";
 import { useNavigate } from "react-router";
-import { NavLink } from "react-router-dom";
 import { useFormStore } from "../../../store/formStore";
+import {Rutas} from "../../../helpers/Rutas.ts";
+import {sendToGTM} from "../../../helpers/sendToGTM.ts";
+import {GTMEvents} from "../../../helpers/GTMEvents.ts";
+import {useLocation} from "react-router-dom";
 
 export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
   const navigate = useNavigate();
@@ -34,12 +37,28 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
     try {
       setFormData(data);
       dataRegistrada(data);
-      navigate("/home/talento-humano");
+      navigate(Rutas.TALENTO_HUMANO, { state: { from: Rutas.DATOS_REGISTRO, data } });
     } catch (error) {
       console.error("Hubo un problema con la petición:", error);
     }
   };
 
+  const location = useLocation();
+  
+  useEffect(() => {
+    if (location.state?.from === Rutas.TERM_CONDICIONES) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.TERM_CONDICIONES_SIGUIENTE
+      });
+    } else if (location.state?.from === Rutas.TALENTO_HUMANO) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.TALENTO_HUMANO_ATRAS
+      });
+    }
+  }, [location]);
+  
   const section2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -85,6 +104,10 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
   };
 
   const tipoDocumento = watch("tipoDocumento");
+
+  const handleBack = () => {
+    navigate(Rutas.TERM_CONDICIONES, { state: { from: Rutas.DATOS_REGISTRO } });
+  };
 
   return (
     <>
@@ -412,14 +435,13 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="h-[150px] py-[50px] flex justify-center ">
               <div className="flex gap-8">
-                <NavLink to="/home/terminos-condiciones">
-                  <button
-                    type="button"
-                    className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
-                  >
-                    Atrás
-                  </button>
-                </NavLink>
+                <button
+                  type="button"
+                  className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
+                  onClick={handleBack}
+                >
+                  Atrás
+                </button>
 
                 <div>
                   <button

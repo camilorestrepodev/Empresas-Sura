@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import "../../../styles/RadioButton.css";
 import { useNavigate } from "react-router";
-import { NavLink } from "react-router-dom";
+import {useLocation} from "react-router-dom";
+import {Rutas} from "../../../helpers/Rutas.ts";
+import {sendToGTM} from "../../../helpers/sendToGTM.ts";
+import {GTMEvents} from "../../../helpers/GTMEvents.ts";
 
 export default function ModeloOperativo({ respuestasSeleccionadas, respuestasDescripciones }: any) {
   const navigate = useNavigate();
@@ -43,7 +46,7 @@ export default function ModeloOperativo({ respuestasSeleccionadas, respuestasDes
     ) {
       respuestasDescripciones(descripciones)
       respuestasSeleccionadas(respuestas);
-      navigate("/home/ambiental");
+      navigate(Rutas.AMBIENTAL, { state: { from: Rutas.MODELO_OPERATIVO } });
     } else {
       setMostrarError(true);
     }
@@ -56,6 +59,26 @@ export default function ModeloOperativo({ respuestasSeleccionadas, respuestasDes
       section8Ref.current.scrollIntoView();
     }
   }, []);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.from === Rutas.LEGAL) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.LEGAL_SIGUIENTE
+      });
+    } else if (location.state?.from === Rutas.AMBIENTAL) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.AMBIENTAL_ATRAS
+      });
+    }
+  }, [location]);
+
+  const handleBack = () => {
+    navigate(Rutas.LEGAL, { state: { from: Rutas.MODELO_OPERATIVO } });
+  };
 
   return (
     <>
@@ -352,14 +375,13 @@ export default function ModeloOperativo({ respuestasSeleccionadas, respuestasDes
 
             <div className="mt-10 flex justify-around items-center">
               <div className="buttons flex justify-between gap-10">
-                <NavLink to={"/home/legal"}>
-                  <button
-                    id="atrasBtn"
-                    className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
-                  >
-                    Atrás
-                  </button>
-                </NavLink>
+                <button
+                  id="atrasBtn"
+                  className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
+                  onClick={handleBack}
+                >
+                  Atrás
+                </button>
 
                 <button
                   type="submit"

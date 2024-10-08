@@ -7,6 +7,10 @@ import { useNavigate } from "react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {NombresVerticales} from "../../../models/NombresVerticales.ts";
 import {Constants} from "../../../Constants.ts";
+import {useLocation} from "react-router-dom";
+import {Rutas} from "../../../helpers/Rutas.ts";
+import {sendToGTM} from "../../../helpers/sendToGTM.ts";
+import {GTMEvents} from "../../../helpers/GTMEvents.ts";
 
 export default function Resultados({
   response,
@@ -98,6 +102,17 @@ export default function Resultados({
     [enviarRutasMenores, handleEnviarGuardarInfo]
   );
 
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.from === Rutas.AMBIENTAL) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.AMBIENTAL_SIGUIENTE
+      });
+    }
+  }, [location]);
+
   useEffect(() => {
     if (response && response.respuestasFormulario && !rutasEnviadas) {
       const rutasProcesadas = procesarRutas(response.respuestasFormulario);
@@ -143,7 +158,7 @@ export default function Resultados({
   );
 
   const onClick = () => {
-    navigate("/talleres/datos-registro-talleres");
+    navigate(Rutas.DATOS_REGISTRO_TALLERES, { state: { from: Rutas.RESULTADOS } });
   };
 
   return (
