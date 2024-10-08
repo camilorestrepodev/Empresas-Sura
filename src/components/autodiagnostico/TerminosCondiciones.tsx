@@ -1,10 +1,24 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import "../../styles/TerminoStyle.css";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
+import {GTMEvents} from "../../helpers/GTMEvents.ts";
+import {sendToGTM} from "../../helpers/sendToGTM.ts";
+import {Rutas} from "../../helpers/Rutas.ts";
 
 export default function TerminosCondiciones() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<"Si" | "No">("No");
+
+  const location = useLocation(); // Obtener la ubicación actual
+  
+  useEffect(() => {
+    if (location.state?.from === Rutas.DATOS_REGISTRO) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.DATOS_REGISTRO_ATRAS,
+      });
+    }
+  }, [location]);
 
   const handleSelectionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelected(e.target.value as "Si" | "No");
@@ -16,7 +30,7 @@ export default function TerminosCondiciones() {
     event.preventDefault();
 
     if (selected === "Si") {
-      navigate("/home/datos-registro");
+      navigate(Rutas.DATOS_REGISTRO, {state: {from: Rutas.TERM_CONDICIONES}});
     }
   };
 

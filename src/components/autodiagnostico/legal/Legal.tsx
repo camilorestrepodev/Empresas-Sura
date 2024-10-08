@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import "../../../styles/RadioButton.css";
 import { useNavigate } from "react-router";
-import { NavLink } from "react-router-dom";
+import {useLocation} from "react-router-dom";
+import {Rutas} from "../../../helpers/Rutas.ts";
+import {sendToGTM} from "../../../helpers/sendToGTM.ts";
+import {GTMEvents} from "../../../helpers/GTMEvents.ts";
 export default function Legal({ respuestasSeleccionadas, respuestasDescripciones }: any) {
   const navigate = useNavigate();
   const [mostrarError, setMostrarError] = useState(false);
@@ -43,7 +46,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
     ) {
       respuestasDescripciones(descripciones)
       respuestasSeleccionadas(respuestas);
-      navigate("/home/modelo-operativo");
+      navigate(Rutas.MODELO_OPERATIVO, { state: { from: Rutas.LEGAL } });
     } else {
       setMostrarError(true);
     }
@@ -56,6 +59,26 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
       section6Ref.current.scrollIntoView();
     }
   }, []);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.from === Rutas.FINANCIERO) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.FINANCIERO_SIGUIENTE
+      });
+    } else if (location.state?.from === Rutas.MODELO_OPERATIVO) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.MODELO_OPERATIVO_ATRAS
+      });
+    }
+  }, [location]);
+
+  const handleBack = () => {
+    navigate(Rutas.FINANCIERO, { state: { from: Rutas.LEGAL } });
+  };
 
   return (
     <>
@@ -312,14 +335,13 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
 
             <div className="mt-10 flex justify-around items-center">
               <div className="flex justify-between gap-10">
-                <NavLink to={"/home/financiera"}>
-                  <button
-                    id="atrasBtn"
-                    className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
-                  >
-                    Atrás
-                  </button>
-                </NavLink>
+                <button
+                  id="atrasBtn"
+                  className="text-white mr-3 h-[50px] w-[100px] md:w-[150px] md:h-[50px] bg-[#2D6DF6] rounded-[28px] hover:bg-[#274585]"
+                  onClick={handleBack}
+                >
+                  Atrás
+                </button>
 
                 <button
                   type="submit"

@@ -4,13 +4,16 @@ import GetDataId from "../../libs/GetDataId";
 import {Taller} from "./selecciones/Taller";
 import "../../styles/SelectStyle.css";
 import FechaFetch from "../../libs/FechaFetch";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {Verticales} from "../../models/NombresVerticales.ts";
 import {Constants} from "../../Constants.ts";
 import {TallerData} from "./TallerData.tsx";
 import {createTallerId} from "../../helpers/TallerId.ts";
 import {enviarRespuestasTalleres} from "../../libs/RegistroTalleresService.ts";
 import enviarCorreosTalleres from "../../libs/AutomatizacionTalleres.ts";
+import {Rutas} from "../../helpers/Rutas.ts";
+import {sendToGTM} from "../../helpers/sendToGTM.ts";
+import {GTMEvents} from "../../helpers/GTMEvents.ts";
 
 interface UserData {
   Nombre: string;
@@ -148,10 +151,12 @@ export function DatosRegistroTalleres() {
   const onSubmit = async (data: any) => {
     setLoading(true);
     const {
+      tipoDocumento,
       nombreCompleto,
       correoElectronico,
       numeroDocumento,
       nombreEmpresa,
+      celular,
     } = data;
 
     const talleresSeleccionados = Object.values(seleccionesTalleres);
@@ -198,7 +203,22 @@ export function DatosRegistroTalleres() {
       const apiResponse = await enviarRespuestasTalleres(requestBody);
       const apiResponse2 = await enviarCorreosTalleres(requestBodyCorreos);
       if (apiResponse && apiResponse2) {
-        navigate("/talleres/thank-you-talleres");
+        navigate(Rutas.REGISTRO_TALLERES_GRACIAS);
+        
+        const nombreTalleres = talleresFiltrados.map((taller) => createTallerId(taller))
+          .join(", ");
+        
+        sendToGTM({
+          event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+          ...GTMEvents.DATOS_REGISTRO_TALLERES_ENVIAR,
+          eventLabel: nombreTalleres,
+          name_Screen: Rutas.DATOS_REGISTRO_TALLERES,
+          'user_name': nombreCompleto,
+          'user_type_ID': tipoDocumento,
+          'user_ID': numeroDocumento,
+          'user_mail': correoElectronico,
+          'user_phone:': celular,
+        });
       }
     } catch (error) {
       console.error("Hubo un problema con la petición:", error);
@@ -209,13 +229,24 @@ export function DatosRegistroTalleres() {
 
   const tipoDocumento = watch("tipoDocumento");
 
-  const handleCedulaChange = async (
+  const handleCedulaChange = async ( 
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = event.target.value.replace(/\D/g, "");
     setInputValue(value);
     setValue("numeroDocumento", value);
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.from === Rutas.RESULTADOS) {
+      sendToGTM({
+        event: GTMEvents.COMPETITIVIDAD_EMPRESARIAL,
+        ...GTMEvents.INFORME_DIAGNOSTICO_COMPETITIVIDAD_INSCRIBIRME
+      });
+    }
+  }, [location]);
 
   useEffect(() => {
     if (primerArea && segundaArea) {
