@@ -9,6 +9,7 @@ import {Rutas} from "../../../helpers/Rutas.ts";
 import {sendToGTM} from "../../../helpers/sendToGTM.ts";
 import {GTMEvents} from "../../../helpers/GTMEvents.ts";
 import {useLocation} from "react-router-dom";
+import Select from "react-select";
 
 export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
   const navigate = useNavigate();
@@ -61,6 +62,12 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
   
   const section2Ref = useRef<HTMLDivElement>(null);
 
+  // Convierte tu lista de sectores a un formato compatible con react-select
+  const options = listaSectores.map((sector) => ({
+    value: sector,
+    label: sector,
+  }));
+
   useEffect(() => {
     if (section2Ref.current) {
       section2Ref.current.scrollIntoView();
@@ -109,6 +116,34 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
     navigate(Rutas.TERM_CONDICIONES, { state: { from: Rutas.DATOS_REGISTRO } });
   };
 
+  const customStyles = {
+    control: (base) => ({
+      ...base,
+      borderRadius: "12px",
+      borderColor: "#2D6DF6", 
+      minHeight: "40px",
+      boxShadow: "none",
+      "&:hover": {
+        borderColor: "#2D6DF6",
+      },
+      paddingLeft: "8px",
+    }),
+    placeholder: (base) => ({
+      ...base,
+      color: "#000",
+      paddingLeft: "4px",
+    }),
+    singleValue: (base) => ({
+      ...base,
+      color: "#000",
+    }),
+    menu: (base) => ({
+      ...base,
+      borderRadius: "12px",
+      overflow: "hidden",
+    }),
+  };
+
   return (
     <>
       <section
@@ -127,7 +162,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
           >
             <div className="mt-3 flex flex-col">
               <label htmlFor="tipoDocumento" className="font-semibold">
-                1. Tipo de documento:
+                Tipo de documento:
               </label>
               <Controller
                 name="tipoDocumento"
@@ -158,7 +193,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
             <div className="mt-3 flex flex-col">
               <div className="flex flex-col">
                 <label htmlFor="numeroDocumento" className="font-semibold">
-                  2. Número de documento:
+                  Número de documento:
                 </label>
                 <Controller
                   name="numeroDocumento"
@@ -221,7 +256,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="mt-3 flex flex-col">
               <label htmlFor="nombreCompleto" className="font-semibold">
-                3. Nombre completo:
+                Nombre completo:
               </label>
               <input
                 id="nombreCompleto"
@@ -256,7 +291,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="mt-3 flex flex-col">
               <label htmlFor="cargo" className="font-semibold">
-                4. Cargo:
+                Cargo:
               </label>
               <input
                 id="cargo"
@@ -288,7 +323,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="mt-3 flex flex-col">
               <label htmlFor="nombreEmpresa" className="font-semibold">
-                5. Nombre de la empresa:
+                Nombre de la empresa:
               </label>
               <input
                 id="nombreEmpresa"
@@ -316,7 +351,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="mt-3 flex flex-col select-container">
               <label htmlFor="departamentoEmpresa" className="font-semibold">
-                6. Departamento de registro empresa:
+                Departamento de registro empresa:
               </label>
               <select
                 id="departamentoEmpresa"
@@ -346,27 +381,22 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="mt-3 flex flex-col">
               <label htmlFor="sectorEconomico" className="font-semibold">
-                7. Actividad económica de la empresa:
+                Actividad económica de la empresa:
               </label>
-              <select
+              <Select
                 id="sectorEconomico"
-                defaultValue={"seleccionar"}
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
+                options={options}
+                styles={customStyles}
+                className="h-[40px] rounded-xl"
+                placeholder="Selecciona una opción"
                 {...register("sectorEconomico", {
                   validate: (value) =>
-                    value !== "" ||
-                    "La actividad económica de la empresa es requerida",
+                    value ? true : "La actividad económica de la empresa es requerida",
                 })}
-              >
-                <option value="" disabled>
-                  Selecciona una opción
-                </option>
-                {listaSectores.map((sector, index) => (
-                  <option key={index} value={sector}>
-                    {sector}
-                  </option>
-                ))}
-              </select>
+                onChange={(selectedOption) =>
+                  setValue("sectorEconomico", selectedOption ? selectedOption.value : "")
+                }
+              />
             </div>
             {errors.sectorEconomico && (
               <div className="error text-[#E40506] italic text-[14px]">
@@ -376,7 +406,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="mt-3 flex flex-col">
               <label htmlFor="correoElectronico" className="font-semibold">
-                8. Correo electrónico:
+                Correo electrónico:
               </label>
               <input
                 id="correoElectronico"
@@ -403,7 +433,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
 
             <div className="mt-3 flex flex-col">
               <label htmlFor="celular" className="font-semibold">
-                9. Celular:
+                Celular:
               </label>
               <input
                 id="celular"

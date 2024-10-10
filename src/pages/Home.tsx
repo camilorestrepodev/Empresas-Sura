@@ -202,14 +202,9 @@ export default function Home() {
       />
       <InfoSteps
         texto={
-          location.pathname === "/home/resultados-autodiagnostico"
-            ? "¡Es momento de seguir adelante! Hemos analizado tus resultados y desarrollado contenidos que te serán útiles para el cierre de brechas y garantizar el éxito de tu empresa."
-            : "Para avanzar, es necesario dar pasos en la dirección correcta. Por esto, te invitamos a realizar un autodiagnóstico diseñado para entender las oportunidades de desarrollo que hemos evidenciado como más relevantes para nuestros empresarios."
-        }
-        subtexto={
-          location.pathname === "/home/resultados-autodiagnostico"
-            ? ""
-            : "¡Conocer tu empresa nos permitirá acompañarte!"
+          location.pathname === "/home/terminos-condiciones"
+            ? "Para avanzar, acepta los términos y condiciones."
+            : ""
         }
       />
       <Routes>

@@ -98,7 +98,7 @@ export default function ModeloOperativo({ respuestasSeleccionadas, respuestasDes
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  28. ¿La empresa identifica sus riesgos? ¿Cuenta con lineamientos para la gestión y control de los riesgos identificados en tu empresa?
+                  ¿La empresa identifica sus riesgos? ¿Cuenta con lineamientos para la gestión y control de los riesgos identificados en tu empresa?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -169,7 +169,7 @@ export default function ModeloOperativo({ respuestasSeleccionadas, respuestasDes
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  29. ¿Conoce la ubicación y cantidades de los activos físicos de su empresa en tiempo real?
+                  ¿Conoce la ubicación y cantidades de los activos físicos de su empresa en tiempo real?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -284,7 +284,7 @@ export default function ModeloOperativo({ respuestasSeleccionadas, respuestasDes
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  30. ¿Tiene identificadas las necesidades y recursos para el almacenamiento y transporte de sus bienes?
+                  ¿Tiene identificadas las necesidades y recursos para el almacenamiento y transporte de sus bienes?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">

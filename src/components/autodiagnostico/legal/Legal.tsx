@@ -98,7 +98,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  25. ¿Cuenta con los registros obligatorios para operar?
+                  ¿Cuenta con los registros obligatorios para operar?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -190,7 +190,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  26. ¿Formaliza los contratos por escrito?
+                  ¿Formaliza los contratos por escrito?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -261,7 +261,7 @@ export default function Legal({ respuestasSeleccionadas, respuestasDescripciones
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  27. ¿Cumple las normas laborales y de seguridad social?
+                  ¿Cumple las normas laborales y de seguridad social?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">

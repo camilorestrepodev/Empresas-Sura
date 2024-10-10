@@ -122,7 +122,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
             <div className="space-y-8">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  11. ¿La empresa conoce cuales son los mínimos legales
+                  ¿La empresa conoce cuales son los mínimos legales
                   para contratar a un empleado?{" "}
                   <span className="italic font-normal">
                     (Como validación de conocimientos obligatorios, exámenes
@@ -216,7 +216,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  12. ¿Cuenta con documentación que respalde la implementación
+                  ¿Cuenta con documentación que respalde la implementación
                   del sistema de gestión en seguridad y salud en el trabajo?{" "}
                   <span className="italic font-normal">
                     (Evaluación o autoevaluación al sistema de gestión en
@@ -364,7 +364,7 @@ export default function TalentoHumano({ respuestasSeleccionadas, respuestasDescr
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  13. ¿Tiene claro cuál es el conocimiento, licencias o las certificaciones legales que deben tener sus empleados para ejercer sus funciones de acuerdo con su profesión o su rol?{" "}
+                  ¿Tiene claro cuál es el conocimiento, licencias o las certificaciones legales que deben tener sus empleados para ejercer sus funciones de acuerdo con su profesión o su rol?{" "}
                   <span className="italic font-normal">
                     (Ejemplos: cursos de manipulación de alimentos, Licencia de SST, Curso en Reanimación Cardiopulmonar.)
                   </span>

@@ -97,7 +97,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  22. ¿Los ingresos de su empresa alcanzan a cubrir todos los gastos?
+                  ¿Los ingresos de su empresa alcanzan a cubrir todos los gastos?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -168,7 +168,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  23. ¿Construye y analiza los estados financieros de la empresa?
+                  ¿Construye y analiza los estados financieros de la empresa?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -239,7 +239,7 @@ export default function Financiera({ respuestasSeleccionadas, respuestasDescripc
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  24. ¿Conoce los beneficios tributarios a los que puede acceder y ha hecho uso de estos?
+                  ¿Conoce los beneficios tributarios a los que puede acceder y ha hecho uso de estos?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">

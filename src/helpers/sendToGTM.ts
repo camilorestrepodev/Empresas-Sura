@@ -15,8 +15,6 @@ export const sendToGTM = (eventData: GTMEventData) => {
 
   lastEventData = { ...eventData };
   
-  console.log('Sending to GTM:', eventData);
-  
   if (window && window.dataLayer) {
     window.dataLayer.push(eventData);
     

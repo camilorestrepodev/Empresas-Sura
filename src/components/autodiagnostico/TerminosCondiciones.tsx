@@ -7,7 +7,7 @@ import {Rutas} from "../../helpers/Rutas.ts";
 
 export default function TerminosCondiciones() {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState<"Si" | "No">("No");
+  const [selected, setSelected] = useState<"Si" | "No" | "">("");
 
   const location = useLocation(); // Obtener la ubicación actual
   
@@ -43,29 +43,16 @@ export default function TerminosCondiciones() {
               Términos y Condiciones
             </h2>
             <p className="text-[18px] leading-[24.2px] mt-5 text-center sm:text-left sm:px-0 md:px-0 lg:px-0 2xl:px-0">
-              El presente formulario busca generar un diagnóstico general de la
-              empresa, con el fin de hacer análisis, entregar recomendaciones,
-              brindar servicios, conectar con aliados y en general, entregar la
-              oferta de valor que SURA tiene establecida para las empresas para
-              entregar bienestar y competitividad sostenibles. Con su
-              diligenciamiento estás autorizando el uso de la misma; además, con
-              el registro de los datos personales autorizas a Suramericana S.A.,
-              en calidad de responsable, a realizar el tratamiento de los datos
-              que sean recolectados, para brindar la gestión y asesoría
-              integral, así como para las demás finalidades contempladas en la
-              Política de Privacidad de Suramericana disponible en{" "}
-              <a href="https://www.segurossura.com">www.segurossura.com</a>{" "}
-              donde se encuentran los canales para ejercer los derechos a
-              actualizar, rectificar, conocer y suprimir los datos. Para conocer
-              visita los términos y condiciones de Empresa Sura visita{" "}
-              <a href="https://segurossura.com/co/terminos-y-condiciones">
+              Autorizo a Suramericana S.A. para el tratamiento de mis datos personales con el fin de brindar gestión y asesoría integral, así como para las demás finalidades contempladas en la Política de Privacidad de Suramericana disponible en {" "}
+              <a href="https://www.segurossura.com" target="_blank" className="text-[#2D6DF6]">www.segurossura.com</a>{" "} donde se encuentran los canales para ejercer mis derechos de conocer, actualizar, rectificar y suprimir mis datos. Adicionalmente, he leído y acepto los términos y condiciones disponibles en {" "}
+              <a href="https://segurossura.com/co/terminos-y-condiciones" target="_blank" className="text-[#2D6DF6]">
                 https://segurossura.com/co/terminos-y-condiciones
-              </a>
+              </a>.
             </p>
           </div>
           <form onSubmit={handleSubmit} className="flex flex-col mt-5">
             <label className="text-lg font-semibold text-center sm:text-left">
-              1. Acepto los términos y condiciones:{" "}
+              Acepto los términos y condiciones:{" "}
               <span className="text-red-500">*</span>
             </label>
             <div className="mt-2 flex justify-center items-center gap-20 sm:items-start sm:flex-col sm:gap-0">

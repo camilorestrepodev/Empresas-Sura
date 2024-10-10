@@ -98,7 +98,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  18. ¿Tiene definida una meta que quiere alcanzar este año o los próximos dos años? <span className="italic font-normal"> - Una meta cuantificable, medible y real.  </span>
+                  ¿Tiene definida una meta que quiere alcanzar este año o los próximos dos años? <span className="italic font-normal"> - Una meta cuantificable, medible y real.  </span>
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -170,7 +170,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
               </div>
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  19. ¿Cuenta con una propuesta de valor clara? ¿Qué hace diferente para que los clientes lo elijan y no a la competencia?
+                  ¿Cuenta con una propuesta de valor clara? ¿Qué hace diferente para que los clientes lo elijan y no a la competencia?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -240,7 +240,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
               </div>
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  20. ¿Mide la satisfacción de sus clientes?
+                  ¿Mide la satisfacción de sus clientes?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -331,7 +331,7 @@ export default function Mercados({ respuestasSeleccionadas, respuestasDescripcio
               </div>
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  21. ¿Cuenta con una identidad de marca?
+                  ¿Cuenta con una identidad de marca?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">

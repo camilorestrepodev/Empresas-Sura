@@ -117,7 +117,7 @@ export default function Ambiental({
                   htmlFor="pregunta31"
                   className="block font-semibold text-lg"
                 >
-                  31. ¿La empresa debe cumplir con algún requisito u obligación en materia ambiental?{" "}
+                  ¿La empresa debe cumplir con algún requisito u obligación en materia ambiental?{" "}
                   <span className="italic font-normal">
                     (Obligaciones asociadas a permisos otorgados por la autoridad ambiental, gestión de recursos naturales como agua, energía, residuos, fauna y flora)
                   </span>
@@ -215,7 +215,7 @@ export default function Ambiental({
                   htmlFor="pregunta32"
                   className="block font-semibold text-lg"
                 >
-                  32. ¿Ha identificado que sus clientes tengan una exigencia/expectativa en materia ambiental al momento de adquirir sus productos y/o servicios?
+                  ¿Ha identificado que sus clientes tengan una exigencia/expectativa en materia ambiental al momento de adquirir sus productos y/o servicios?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -289,7 +289,7 @@ export default function Ambiental({
                   htmlFor="pregunta33"
                   className="block font-semibold text-lg"
                 >
-                  33. ¿Tiene identificados los impactos ambientales generados por su operación?
+                  ¿Tiene identificados los impactos ambientales generados por su operación?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -384,7 +384,7 @@ export default function Ambiental({
                   htmlFor="pregunta34"
                   className="block font-semibold text-lg"
                 >
-                  34. ¿Realiza medición de su huella de carbono?
+                  ¿Realiza medición de su huella de carbono?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">

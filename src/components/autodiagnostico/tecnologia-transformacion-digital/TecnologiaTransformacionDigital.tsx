@@ -104,7 +104,7 @@ export default function TecnologiaTransformacionDigital({
             <div className="grid grid-cols-1 gap-y-6 mt-5 sm:mt-5">
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  14. ¿Cuenta con herramientas tecnológicas que apalanquen la operación del negocio?{" "}
+                  ¿Cuenta con herramientas tecnológicas que apalanquen la operación del negocio?{" "}
                   <span className="italic font-normal">
                     (CRM para gestión de clientes, ERP para conectar varias herramientas que operan en el negocio, etc.)
                   </span>
@@ -219,7 +219,7 @@ export default function TecnologiaTransformacionDigital({
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  15. Si utiliza herramientas o software NO gratuitos, ¿cuenta con las licencias?
+                  Si utiliza herramientas o software NO gratuitos, ¿cuenta con las licencias?
                 </label>
                 <div className="space-y-2">
                   <div className="flex items-center">
@@ -332,7 +332,7 @@ export default function TecnologiaTransformacionDigital({
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  16. ¿Usa herramientas de ciberseguridad en sus canales digitales para proteger su información?{" "}
+                  ¿Usa herramientas de ciberseguridad en sus canales digitales para proteger su información?{" "}
                   <span className="italic font-normal">
                     (Antivirus, control de accesos a las aplicaciones, seguros)
                   </span>
@@ -406,7 +406,7 @@ export default function TecnologiaTransformacionDigital({
 
               <div className="space-y-4">
                 <label className="block font-semibold text-lg">
-                  17. ¿Tiene canales digitales como sitio web o redes sociales y los actualiza con frecuencia?{" "}
+                  ¿Tiene canales digitales como sitio web o redes sociales y los actualiza con frecuencia?{" "}
                   <span className="italic font-normal">
                     (Correo, chat web, WhatsApp, redes sociales, sitio web)
                   </span>
