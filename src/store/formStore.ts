@@ -17,6 +17,7 @@ export const useFormStore = create<FormState>((set) => ({
     sectorEconomico: '',
     correoElectronico: '',
     celular: '',
+    digitoVerificacion: '',
   },
   setFormData: (data: FormData) => set({ formData: data }),
 }));

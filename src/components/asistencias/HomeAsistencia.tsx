@@ -6,6 +6,7 @@ import { enviarRespuestasAsistencia } from "../../libs/RegistroAsistenciaService
 import { useNavigate } from "react-router-dom";
 import GetTaller from "../../libs/GetTaller";
 import {Constants} from "../../Constants.ts";
+import {TipoDocumento} from "../../models/TipoDocumento.ts";
 
 interface TallerData {
   taller: string;
@@ -25,6 +26,7 @@ const HomeAsistencia = () => {
   const [digitoVerificacion, setDigitoVerificacion] = useState("");
   const [responseData, setResponseData] = useState<TallerData[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [primeraVez, setPrimeraVez] = useState(true);
 
   const navigate = useNavigate();
 
@@ -78,7 +80,13 @@ const HomeAsistencia = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      const response = await enviarRespuestasAsistencia({ ...data, rating });
+      let digitoVerificacion = "";
+      
+      if (data.tipoDocumento === TipoDocumento.NIT) {
+        digitoVerificacion = calcularDigitoVerificacion(data.numeroDocumento).toString();
+      }
+      
+      const response = await enviarRespuestasAsistencia({ ...data, rating, digitoVerificacion });
       console.log("Respuesta:", response);
       navigate("/asistencia/thank-you-asistencia");
     } catch (error) {
@@ -86,23 +94,29 @@ const HomeAsistencia = () => {
     }
   };
 
-  const handleBlur = async () => {
-    try {
-      const response = await GetTaller(inputValue);
-      if (response && response.Taller) {
-        const filteredData = response.Taller.map((item: any) => ({
-          taller: item.Taller,
-          fecha: item.Fecha,
-        }));
-        setResponseData(filteredData);
-      } else {
-        setResponseData([]);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
+  useEffect(() => {
+    if (!primeraVez) {
+      return;
     }
-  };
-  
+    
+    setPrimeraVez(false);
+    
+    const fetchData = async () => {
+      try {
+        const response = await GetTaller(inputValue);
+        if (response && response.talleres) {
+          setResponseData(response.talleres);
+        } else {
+          setResponseData([]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const convertirFechaBogota = (fechaISO: string) => {
     const fecha = new Date(fechaISO);
     fecha.setHours(fecha.getHours() - 2);
@@ -145,7 +159,7 @@ const HomeAsistencia = () => {
               htmlFor="tipoDocumento"
               className="font-semibold text-[18px]"
             >
-              1. Tipo de documento: <span className="text-red-600">*</span>
+              Tipo de documento: <span className="text-red-600">*</span>
             </label>
             <Controller
               name="tipoDocumento"
@@ -171,7 +185,7 @@ const HomeAsistencia = () => {
           <div className="mt-3 flex flex-col">
             <div className="flex flex-col">
               <label htmlFor="numeroDocumento" className="font-semibold">
-                2. Número de documento:
+                Número de documento:
               </label>
               <input
                 id="numeroDocumento"
@@ -184,7 +198,6 @@ const HomeAsistencia = () => {
                     ? handleCedulaChange
                     : handleNumeroDocumentoChange
                 }
-                onBlur={handleBlur}
               />
             </div>
 
@@ -193,7 +206,7 @@ const HomeAsistencia = () => {
                 <label htmlFor="nit"> Dígito de verificación:</label>
                 <input
                   id="nit"
-                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-5 bg-gray-200 cursor-auto"
+                  className="h-[40px] rounded-xl border border-[#2D6DF6] px-4 bg-gray-200 cursor-auto"
                   type="text"
                   placeholder={digitoVerificacion}
                   readOnly
@@ -204,7 +217,7 @@ const HomeAsistencia = () => {
 
           <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
-              3. Taller al que asistió <span className="text-red-600">*</span>
+              Taller al que asistió <span className="text-red-600">*</span>
             </label>
             <Controller
               name="taller"
@@ -219,11 +232,14 @@ const HomeAsistencia = () => {
                   <option value="" disabled>
                     Selecciona una opción
                   </option>
-                  {responseData.map((data) => (
-                    <option key={data.taller} value={data.taller}>
-                      {data.taller} - {convertirFechaBogota(data.fecha).toUpperCase()}
-                    </option>
-                  ))}
+                  {responseData.map((data) => {
+                    const fechaTaller = `${convertirFechaBogota(data.fecha).toUpperCase()} - ${data.taller}`;
+                    return (
+                      <option key={fechaTaller} value={fechaTaller}>
+                        {fechaTaller}
+                      </option>
+                    );
+                  })}
                 </select>
               )}
             />
@@ -234,7 +250,7 @@ const HomeAsistencia = () => {
               htmlFor="nombreCompleto"
               className="font-semibold text-[18px]"
             >
-              4. Nombre de contacto:
+              Nombre de contacto:
             </label>
             <input
               id="nombreCompleto"
@@ -269,7 +285,7 @@ const HomeAsistencia = () => {
 
           <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
-              5. Nombre de la empresa: <span className="text-red-600">*</span>
+              Nombre de la empresa: <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
@@ -296,7 +312,7 @@ const HomeAsistencia = () => {
 
           <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
-              6. Correo electrónico: <span className="text-red-600">*</span>
+              Correo electrónico: <span className="text-red-600">*</span>
             </label>
             <input
               type="email"
@@ -322,7 +338,7 @@ const HomeAsistencia = () => {
 
           <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
-              7. Número de celular: <span className="text-red-600">*</span>
+              Número de celular: <span className="text-red-600">*</span>
             </label>
             <input
               type="tel"
@@ -353,7 +369,7 @@ const HomeAsistencia = () => {
 
           <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
-              8. Cargo: <span className="text-red-600">*</span>
+              Cargo: <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
@@ -379,7 +395,7 @@ const HomeAsistencia = () => {
 
           <div className="mt-3 flex flex-col ">
             <label className="text-lg font-semibold text-center sm:text-left text-[18px] xxs:text-left">
-              9. ¿Cómo calificas el contenido de este taller?{" "}
+              ¿Cómo calificas el contenido de este taller?{" "}
               <span className="text-red-600">*</span>
             </label>
             <p className="ml-5 italic xxxs:text-center xxs:text-left">
@@ -417,7 +433,7 @@ const HomeAsistencia = () => {
 
           <div className="flex flex-col mt-3">
             <label className="text-lg font-semibold text-center sm:text-left text-[18px]">
-              10. ¿El espacio aportó herramientas y/o para la gestión de tu
+              ¿El espacio aportó herramientas y/o para la gestión de tu
               empresa? <span className="text-red-500">*</span>
             </label>
             <div className="mt-2 flex gap-20 sm:items-start sm:gap-10 xxxs:gap-5 xxxs:justify-center xxs:justify-start">
@@ -474,7 +490,7 @@ const HomeAsistencia = () => {
 
           <div className="flex flex-col mt-3">
             <label className="text-lg font-semibold text-center sm:text-left text-[18px] xxs:text-left">
-              11. ¿Te gustaría acceder a la ruta de Platzi?{" "}
+              ¿Te gustaría acceder a la ruta de Platzi?{" "}
               <span className="text-red-500">*</span>
             </label>
 
@@ -555,7 +571,7 @@ const HomeAsistencia = () => {
 
           <div className="mt-3 flex flex-col">
             <label className="font-semibold text-[18px]">
-              12. ¿Quieres conocer cómo podemos acompañarte desde SURA para
+              ¿Quieres conocer cómo podemos acompañarte desde SURA para
               proteger la información que manejas de tu empresa y de tus
               clientes en los medios digitales?{" "}
               <span className="text-red-600">*</span>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Departamentos, Sectores } from "./page.data";
 import { DatosRegistroProps, FormData } from "./page.types";
@@ -9,7 +9,8 @@ import {Rutas} from "../../../helpers/Rutas.ts";
 import {sendToGTM} from "../../../helpers/sendToGTM.ts";
 import {GTMEvents} from "../../../helpers/GTMEvents.ts";
 import {useLocation} from "react-router-dom";
-import Select from "react-select";
+// import Select from "react-select";
+import {TipoDocumento} from "../../../models/TipoDocumento.ts";
 
 export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
   const navigate = useNavigate();
@@ -34,8 +35,27 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
     defaultValues: formData
   });
 
+  const calcularDigitoVerificacion = (nit: string): number => {
+    const vpri = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
+    let y = 0;
+
+    for (let x = 0; x < nit.length; x++) {
+      y += parseInt(nit.charAt(x)) * vpri[x % vpri.length];
+    }
+
+    const z = y % 11;
+    return z > 1 ? 11 - z : z;
+  };
+  
   const onSubmit = async (data: FormData): Promise<void> => {
     try {
+      
+      if (data.tipoDocumento === TipoDocumento.NIT) {
+        const digitoVerificacion = calcularDigitoVerificacion(data.numeroDocumento);
+        
+        data.digitoVerificacion = digitoVerificacion.toString();
+      }
+      
       setFormData(data);
       dataRegistrada(data);
       navigate(Rutas.TALENTO_HUMANO, { state: { from: Rutas.DATOS_REGISTRO, data } });
@@ -63,28 +83,16 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
   const section2Ref = useRef<HTMLDivElement>(null);
 
   // Convierte tu lista de sectores a un formato compatible con react-select
-  const options = listaSectores.map((sector) => ({
-    value: sector,
-    label: sector,
-  }));
+  // const options = listaSectores.map((sector) => ({
+  //   value: sector,
+  //   label: sector,
+  // }));
 
   useEffect(() => {
     if (section2Ref.current) {
       section2Ref.current.scrollIntoView();
     }
   }, []);
-
-  const calcularDigitoVerificacion = (nit: string): number => {
-    const vpri = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
-    let y = 0;
-
-    for (let x = 0; x < nit.length; x++) {
-      y += parseInt(nit.charAt(x)) * vpri[x % vpri.length];
-    }
-
-    const z = y % 11;
-    return z > 1 ? 11 - z : z;
-  };
 
   const handleNumeroDocumentoChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -116,33 +124,33 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
     navigate(Rutas.TERM_CONDICIONES, { state: { from: Rutas.DATOS_REGISTRO } });
   };
 
-  const customStyles = {
-    control: (base) => ({
-      ...base,
-      borderRadius: "12px",
-      borderColor: "#2D6DF6", 
-      minHeight: "40px",
-      boxShadow: "none",
-      "&:hover": {
-        borderColor: "#2D6DF6",
-      },
-      paddingLeft: "8px",
-    }),
-    placeholder: (base) => ({
-      ...base,
-      color: "#000",
-      paddingLeft: "4px",
-    }),
-    singleValue: (base) => ({
-      ...base,
-      color: "#000",
-    }),
-    menu: (base) => ({
-      ...base,
-      borderRadius: "12px",
-      overflow: "hidden",
-    }),
-  };
+  // const customStyles = {
+  //   control: (base: any) => ({
+  //     ...base,
+  //     borderRadius: "12px",
+  //     borderColor: "#2D6DF6", 
+  //     minHeight: "40px",
+  //     boxShadow: "none",
+  //     "&:hover": {
+  //       borderColor: "#2D6DF6",
+  //     },
+  //     paddingLeft: "8px",
+  //   }),
+  //   placeholder: (base: any) => ({
+  //     ...base,
+  //     color: "#000",
+  //     paddingLeft: "4px",
+  //   }),
+  //   singleValue: (base: any) => ({
+  //     ...base,
+  //     color: "#000",
+  //   }),
+  //   menu: (base: any) => ({
+  //     ...base,
+  //     borderRadius: "12px",
+  //     overflow: "hidden",
+  //   }),
+  // };
 
   return (
     <>
@@ -178,8 +186,8 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                     <option value="" disabled>
                       Selecciona una opción
                     </option>
-                    <option value="nit">NIT</option>
-                    <option value="cedula">CÉDULA</option>
+                    <option value={TipoDocumento.NIT}>NIT</option>
+                    <option value={TipoDocumento.CC}>CÉDULA</option>
                   </select>
                 )}
               />
@@ -206,14 +214,18 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                       message: "El número de documento debe ser numérico",
                     },
                     minLength: {
-                      value: 7,
+                      value: tipoDocumento === TipoDocumento.NIT ? 9 : 7, // Si es NIT, debe tener al menos 9 dígitos
                       message:
-                        "El número de documento debe tener al menos 7 dígitos",
+                        tipoDocumento === TipoDocumento.NIT
+                          ? "El número NIT debe tener 9 dígitos"
+                          : "El número de documento debe tener al menos 7 dígitos",
                     },
                     maxLength: {
-                      value: 10,
+                      value: tipoDocumento === TipoDocumento.NIT ? 9 : 12, // Si es NIT, debe tener exactamente 9 dígitos
                       message:
-                        "El número de documento no puede tener más de 10 dígitos",
+                        tipoDocumento === TipoDocumento.NIT
+                          ? "El número NIT debe tener exactamente 9 dígitos"
+                          : "El número de documento no puede tener más de 10 dígitos",
                     },
                   }}
                   render={({ field }) => (
@@ -223,7 +235,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                       type="text"
                       placeholder="Ej. 123456789"
                       {...field}
-                      maxLength={12}
+                      maxLength={tipoDocumento === TipoDocumento.NIT ? 9 : 12}
                       value={field.value}
                       onChange={(e) => {
                         field.onChange(e);
@@ -240,12 +252,12 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                 )}
               </div>
 
-              {tipoDocumento === "nit" && (
+              {tipoDocumento === TipoDocumento.NIT && (
                 <div className="mt-2 flex flex-col">
                   <label htmlFor="nit"> Dígito de verificación:</label>
                   <input
                     id="nit"
-                    className="h-[40px] rounded-xl border border-[#2D6DF6] px-5 bg-gray-200 cursor-auto"
+                    className="h-[40px] rounded-xl border border-[#2D6DF6] px-4 bg-gray-200 cursor-auto"
                     type="text"
                     placeholder={digitoVerificacion}
                     readOnly
@@ -383,20 +395,25 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               <label htmlFor="sectorEconomico" className="font-semibold">
                 Actividad económica de la empresa:
               </label>
-              <Select
+              <select
                 id="sectorEconomico"
-                options={options}
-                styles={customStyles}
-                className="h-[40px] rounded-xl"
-                placeholder="Selecciona una opción"
+                defaultValue={"seleccionar"}
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 {...register("sectorEconomico", {
                   validate: (value) =>
-                    value ? true : "La actividad económica de la empresa es requerida",
+                    value !== "" ||
+                    "La actividad económica de la empresa es requerida",
                 })}
-                onChange={(selectedOption) =>
-                  setValue("sectorEconomico", selectedOption ? selectedOption.value : "")
-                }
-              />
+              >
+                <option value="" disabled>
+                  Selecciona una opción
+                </option>
+                {listaSectores.map((sector, index) => (
+                  <option key={index} value={sector}>
+                    {sector}
+                  </option>
+                ))}
+              </select>
             </div>
             {errors.sectorEconomico && (
               <div className="error text-[#E40506] italic text-[14px]">
@@ -440,6 +457,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                 className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 type="tel"
                 placeholder="Ingresa tu celular"
+                maxLength={10}
                 pattern="[0-9]{10}"
                 {...register("celular", {
                   required: {

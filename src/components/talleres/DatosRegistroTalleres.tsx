@@ -151,13 +151,19 @@ export function DatosRegistroTalleres() {
   const onSubmit = async (data: any) => {
     setLoading(true);
     const {
-      tipoDocumento,
       nombreCompleto,
       correoElectronico,
       numeroDocumento,
-      nombreEmpresa,
+      tipoDocumento,
       celular,
+      nombreEmpresa,
     } = data;
+    
+    let digitoVerificacion = "";
+    
+    if (tipoDocumento === "nit") {
+      digitoVerificacion = calcularDigitoVerificacion(numeroDocumento).toString();
+    }
 
     const talleresSeleccionados = Object.values(seleccionesTalleres);
     
@@ -184,10 +190,13 @@ export function DatosRegistroTalleres() {
       );
     
     const requestBody = {
+      tipoDocumento,
       numeroDocumento,
       nombreCompleto,
       correoElectronico,
       nombreEmpresa,
+      celular,
+      digitoVerificacion,
       selectedFechas,
     };
 
@@ -272,7 +281,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="tipoDocumento" className="font-semibold">
-              1. Tipo de documento:
+              Tipo de documento:
             </label>
             <Controller
               name="tipoDocumento"
@@ -302,7 +311,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="numeroDocumento" className="font-semibold">
-              2. Número de documento:
+              Número de documento:
             </label>
             <input
               id="numeroDocumento"
@@ -336,7 +345,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="nombreCompleto" className="font-semibold">
-              3. Nombre completo:
+              Nombre completo:
             </label>
             <input
               id="nombreCompleto"
@@ -371,7 +380,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="nombreEmpresa" className="font-semibold">
-              4. Nombre de la empresa:
+              Nombre de la empresa:
             </label>
             <input
               id="nombreEmpresa"
@@ -399,7 +408,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="correoElectronico" className="font-semibold">
-              5. Correo electrónico:
+              Correo electrónico:
             </label>
             <input
               id="correoElectronico"
@@ -426,7 +435,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="celular" className="font-semibold">
-              6. Número de celular:
+              Número de celular:
             </label>
             <input
               id="celular"
@@ -458,7 +467,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="cargo" className="font-semibold">
-              7. Cargo:
+              Cargo:
             </label>
             <input
               id="cargo"
@@ -485,7 +494,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="primerArea" className="font-semibold">
-              8. Selecciona la primera área en la que quieres asistir al espacio
+              Selecciona la primera área en la que quieres asistir al espacio
               grupal. Recuerda que debe coincidir con tu ruta de competitividad:
             </label>
             <Controller
@@ -532,7 +541,7 @@ export function DatosRegistroTalleres() {
 
           <div className="mt-3 flex flex-col">
             <label htmlFor="segundaArea" className="font-semibold">
-              9. Selecciona la segunda área en la que quieres asistir al espacio
+              Selecciona la segunda área en la que quieres asistir al espacio
               grupal. Recuerda que debe coincidir con tu ruta de competitividad:
             </label>
             <Controller

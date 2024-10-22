@@ -8,6 +8,7 @@ export interface FormData {
   sectorEconomico: string;
   correoElectronico: string;
   celular: string;
+  digitoVerificacion: string;
 }
 
 export interface DatosRegistroProps {

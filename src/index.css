@@ -1,4 +1,4 @@
-@import url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.woff2");
+/*@import url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.woff2");*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,14 +7,12 @@
   font-family: "Sura-Sans";
   font-style: normal;
   font-weight: normal;
-  src: url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.ttf")
-      format(truetype),
-    url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.woff2")
-      format(woff2);
+  src: url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.ttf") format("truetype"),
+       url("https://staticdigital.labsura.com.co/assets/fonts/SuraSans.woff2") format("woff2");
 }
  
 body {
-  font-family: "Sura-Sans" !important;
+  font-family: "Sura-Sans", serif !important;
 }
 
 .bg-titulo-xxxs {
