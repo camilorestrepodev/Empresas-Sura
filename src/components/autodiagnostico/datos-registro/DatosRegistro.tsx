@@ -50,10 +50,13 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
   const onSubmit = async (data: FormData): Promise<void> => {
     try {
       
+      data.documentoEmpresa = data.numeroDocumento;
+      
       if (data.tipoDocumento === TipoDocumento.NIT) {
         const digitoVerificacion = calcularDigitoVerificacion(data.numeroDocumento);
         
         data.digitoVerificacion = digitoVerificacion.toString();
+        data.documentoEmpresa = `${data.numeroDocumento}${digitoVerificacion}`;
       }
       
       setFormData(data);
@@ -169,14 +172,96 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
             className="mt-3 px-[20px]"
           >
             <div className="mt-3 flex flex-col">
+              <div className="flex flex-col">
+                <label htmlFor="documento" className="font-semibold">
+                  Número de documento de quien diligencia:
+                </label>
+                <Controller
+                  name="documento"
+                  control={control}
+                  defaultValue=""
+                  rules={{
+                    required: "El número de documento es requerido",
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: "El número de documento debe ser numérico",
+                    },
+                    minLength: {
+                      value: 7,
+                      message: "El número de documento debe tener al menos 7 dígitos",
+                    },
+                    maxLength: {
+                      value: 12,
+                      message: "El número de documento no puede tener más de 10 dígitos",
+                    },
+                  }}
+                  render={({field}) => (
+                    <input
+                      id="documento"
+                      className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
+                      type="text"
+                      placeholder="Ingresa tu número de documento"
+                      {...field}
+                      maxLength={12}
+                      value={field.value}
+                      onChange={(e) => {
+                        field.onChange(e);
+                      }}
+                    />
+                  )}
+                />
+                {errors.documento && (
+                  <div className="error text-[#E40506] italic text-[14px]">
+                    {errors.documento.message}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="mt-3 flex flex-col">
+              <label htmlFor="nombreCompleto" className="font-semibold">
+                Nombre completo:
+              </label>
+              <input
+                id="nombreCompleto"
+                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
+                type="text"
+                placeholder="Ingresa tu nombre completo"
+                {...register("nombreCompleto", {
+                  required: {
+                    value: true,
+                    message: "El nombre completo es requerido",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z\s]*$/,
+                    message: "El nombre solo debe contener letras",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "El nombre debe tener al menos 3 caracteres",
+                  },
+                  maxLength: {
+                    value: 30,
+                    message: "El nombre no debe superar los 50 caracteres",
+                  },
+                })}
+              />
+              {errors.nombreCompleto && (
+                <div className="error text-[#E40506] italic text-[14px]">
+                  {errors.nombreCompleto.message}
+                </div>
+              )}
+            </div>
+
+            <div className="mt-3 flex flex-col">
               <label htmlFor="tipoDocumento" className="font-semibold">
-                Tipo de documento:
+                Tipo de documento de la empresa:
               </label>
               <Controller
                 name="tipoDocumento"
                 control={control}
-                rules={{ required: "El tipo de documento es requerido" }}
-                render={({ field }) => (
+                rules={{required: "El tipo de documento es requerido"}}
+                render={({field}) => (
                   <select
                     id="tipoDocumento"
                     defaultValue=""
@@ -201,7 +286,7 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
             <div className="mt-3 flex flex-col">
               <div className="flex flex-col">
                 <label htmlFor="numeroDocumento" className="font-semibold">
-                  Número de documento:
+                  Número de documento de la empresa:
                 </label>
                 <Controller
                   name="numeroDocumento"
@@ -228,12 +313,12 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
                           : "El número de documento no puede tener más de 10 dígitos",
                     },
                   }}
-                  render={({ field }) => (
+                  render={({field}) => (
                     <input
                       id="numeroDocumento"
                       className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                       type="text"
-                      placeholder="Ej. 123456789"
+                      placeholder="Ingresa el número de documento de la empresa"
                       {...field}
                       maxLength={tipoDocumento === TipoDocumento.NIT ? 9 : 12}
                       value={field.value}
@@ -267,36 +352,29 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
             </div>
 
             <div className="mt-3 flex flex-col">
-              <label htmlFor="nombreCompleto" className="font-semibold">
-                Nombre completo:
+              <label htmlFor="nombreEmpresa" className="font-semibold">
+                Nombre de la empresa:
               </label>
               <input
-                id="nombreCompleto"
+                id="nombreEmpresa"
                 className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
                 type="text"
-                placeholder="Ej. Martha Gómez"
-                {...register("nombreCompleto", {
+                placeholder="Ingresa el nombre de la empresa"
+                {...register("nombreEmpresa", {
                   required: {
                     value: true,
-                    message: "El nombre completo es requerido",
-                  },
-                  pattern: {
-                    value: /^[a-zA-Z\s]*$/,
-                    message: "El nombre solo debe contener letras",
-                  },
-                  minLength: {
-                    value: 3,
-                    message: "El nombre debe tener al menos 3 caracteres",
+                    message: "El nombre de la empresa es requerido",
                   },
                   maxLength: {
-                    value: 30,
-                    message: "El nombre no debe superar los 50 caracteres",
+                    value: 50,
+                    message:
+                      "El nombre de la empresa no debe superar los 50 caracteres",
                   },
                 })}
               />
-              {errors.nombreCompleto && (
+              {errors.nombreEmpresa && (
                 <div className="error text-[#E40506] italic text-[14px]">
-                  {errors.nombreCompleto.message}
+                  {errors.nombreEmpresa.message}
                 </div>
               )}
             </div>
@@ -329,34 +407,6 @@ export default function DatosRegistro({ dataRegistrada }: DatosRegistroProps) {
               {errors.cargo && (
                 <div className="error text-[#E40506] italic text-[14px]">
                   {errors.cargo.message}
-                </div>
-              )}
-            </div>
-
-            <div className="mt-3 flex flex-col">
-              <label htmlFor="nombreEmpresa" className="font-semibold">
-                Nombre de la empresa:
-              </label>
-              <input
-                id="nombreEmpresa"
-                className="h-[40px] rounded-xl border border-[#2D6DF6] px-4"
-                type="text"
-                placeholder="Ingresa el nombre de la empresa"
-                {...register("nombreEmpresa", {
-                  required: {
-                    value: true,
-                    message: "El nombre de la empresa es requerido",
-                  },
-                  maxLength: {
-                    value: 50,
-                    message:
-                      "El nombre de la empresa no debe superar los 50 caracteres",
-                  },
-                })}
-              />
-              {errors.nombreEmpresa && (
-                <div className="error text-[#E40506] italic text-[14px]">
-                  {errors.nombreEmpresa.message}
                 </div>
               )}
             </div>

@@ -1,4 +1,5 @@
 export interface FormData {
+  documento: string;
   nombreCompleto: string;
   tipoDocumento: string;
   numeroDocumento: string;
@@ -9,6 +10,7 @@ export interface FormData {
   correoElectronico: string;
   celular: string;
   digitoVerificacion: string;
+  documentoEmpresa: string;
 }
 
 export interface DatosRegistroProps {
