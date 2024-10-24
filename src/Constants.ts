@@ -7,11 +7,12 @@
   static readonly FECHA_API_URL = "https://prod-138.westus.logic.azure.com:443/workflows/d7e9a430c198480fa80dcb75cbaa3ed2/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=A8utDwkG6bcFhZY9OMNPGoRJdC80NV5VIz4A_xALiWg";
   static readonly GET_ALIADO_API_URL = "https://prod-188.westus.logic.azure.com:443/workflows/b9e4cf07ca7347bf9db0b43ab3423e8b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=AaUTJaUU5ZOLpjRLRLqE8FIYcVf-b4q0WsTrvKMj3TY";
   static readonly GET_DATA_ID_API_URL = "https://prod-12.westus.logic.azure.com:443/workflows/4ddf89a44dac41aca3f4960989f4b260/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YJfwpoT4YG7HU0oineZYhvvKas5l78aPgKFwE4QrbfQ";
-  static readonly GET_TALLER_API_URL = "https://prod-117.westus.logic.azure.com:443/workflows/f6992336e10744539ebb3029ca8fd27a/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NUFYBNeSK6kSFXa4lWOTwvEDr4nUOAeqI5i0Lu727FQ";
+  static readonly GET_TALLER_API_URL = "https://prod-95.westus.logic.azure.com:443/workflows/0eb4057d73634120a52895a2dcd1ae97/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=c4pX6B1bW0YR53RgQcU8C7RbxsAXHvSnmvJs0cyOT7k";
   static readonly GUARDAR_INFO_API_URL = "https://prod-41.westus.logic.azure.com:443/workflows/2e73c9a9d06d4d1f90eba3be0fe7375b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1-nvs0fJJbK6_avH4MwRCPadkBAr8_oR135aDq6xa9c";
   static readonly REGISTRO_ASISTENCIA_API_URL = "https://prod-103.westus.logic.azure.com:443/workflows/b0479d24370b42eb9f387632738ac527/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=09Cl_UJCuQcaqWpiuKt56dLS6s0OMoTK5Yln_MFvd2g";
   static readonly REGISTRO_TALLERES_API_URL = "https://prod-08.westus.logic.azure.com:443/workflows/c30c3b36b76e4643a70c3268e4fa5bbc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CmMRz7_-qfCBOqoty3Xf473qJKpF7vtTDjGAPzTGtOQ";
-  
+
+
   // URLs from Home component
   static readonly FONDO_RESULTADOS = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/72f9ecb6-ab1f-4fc6-9e60-3732a21d9d38.png";
   static readonly FONDO_HOME = "https://image.comunicaciones.sura.com/lib/fe3911727564047d771277/m/1/9a072391-b9dc-437c-bac8-78ec0d8df38a.png";
